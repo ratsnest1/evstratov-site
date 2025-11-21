@@ -1,0 +1,78 @@
+* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Jomolhari', serif;
+    overflow-x: hidden;
+    height: auto;
+    background: black;
+}
+
+.fixed-title {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    font-family: 'Jomolhari', serif;
+    font-size: 20px;
+    letter-spacing: 18px;
+    color: white;
+    z-index: 1000;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: normal;
+}
+
+/* Картинка занимает свою естественную высоту с приближением */
+.bg-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: scale(1.5); /* Сильное приближение */
+    transform-origin: top center; /* Приближаем от верхнего края */
+}
+
+/* Для телефонов - еще сильнее приближаем */
+@media (max-width: 768px) {
+    .fixed-title {
+        font-size: 16px;
+        letter-spacing: 12px;
+        top: 3px;
+        right: 3px;
+    }
+    
+    .bg-image {
+        transform: scale(2.2); /* Очень сильное приближение на телефоне */
+        transform-origin: top center;
+    }
+}
+
+/* Для планшетов */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .fixed-title {
+        font-size: 18px;
+        letter-spacing: 15px;
+    }
+    
+    .bg-image {
+        transform: scale(1.8);
+        transform-origin: top center;
+    }
+}
+
+/* Для больших экранов */
+@media (min-width: 1200px) {
+    .fixed-title {
+        font-size: 22px;
+        letter-spacing: 20px;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .bg-image {
+        transform: scale(1.0);
+        transform-origin: top center;
+    }
+}
