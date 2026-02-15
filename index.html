@@ -2,28 +2,36 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Evstratov</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Jomolhari&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="page">
-    <!-- ФИО ПО ЦЕНТРУ -->
-    <div class="center-name">
-      Evstratov
-    </div>
+  <!-- Фиксированное имя в правом верхнем углу -->
+  <div class="fixed-title">EVSTRATOV</div>
 
-    <!-- НИЖНИЙ ЛЕВЫЙ БЛОК -->
-    <div class="bottom-left">
-      <div class="bottom-list">
-        <div>terre noire</div>
-        <div>lune blanche</div>
-        <div>vitrail</div>
-        <div>cendre</div>
-      </div>
-      <div class="bottom-tag">
-        @your_nickname
-      </div>
+  <!-- Фоновая картинка -->
+  <div class="image-container">
+    <img src="bg.jpg" class="bg-image" alt="Background">
+  </div>
+
+  <!-- Центральный блок с точкой и списком вещей -->
+  <div class="center-wrapper">
+    <div class="center-dot">●</div>
+
+    <div class="items-list">
+      <a href="#" class="item-link">terre noire</a>
+      <a href="#" class="item-link">lune blanche</a>
+      <a href="#" class="item-link">vitrail</a>
+      <a href="#" class="item-link">cendre</a>
     </div>
+  </div>
+
+  <!-- Ссылка на Telegram внизу -->
+  <div class="footer-link">
+    <a href="https://t.me/your_assistant" target="_blank">@your_assistant</a>
   </div>
 </body>
 </html>
