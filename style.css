@@ -5,157 +5,66 @@
 }
 
 body {
-  font-family: 'Jomolhari', serif;
-  overflow-x: hidden;
+  background: #000;
+  color: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   min-height: 100vh;
-  background: black;
-  color: white;
+}
+
+.page {
   position: relative;
-}
-
-/* Верхний правый угол — имя */
-.fixed-title {
-  position: fixed;
-  top: 5px;
-  right: 5px;
-  font-size: 20px;
-  letter-spacing: 18px;
-  color: white;
-  z-index: 1000;
-  text-transform: uppercase;
-  font-weight: normal;
-}
-
-/* Контейнер с фоном */
-.image-container {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-}
-
-/* Фоновая картинка */
-.bg-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.7);
-  transform: scale(1.2);
-  transform-origin: center;
-}
-
-/* Центр экрана: точка + список */
-.center-wrapper {
-  position: relative;
-  z-index: 1;
   min-height: 100vh;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-/* Центральная точка/символ */
-.center-dot {
-  font-size: 32px;
-  margin-bottom: 24px;
+/* Верх: фамилия, без капслока */
+.top-name {
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  font-weight: 400;
+  text-transform: none;
+  opacity: 0.9;
 }
 
-/* Список вещей */
-.items-list {
+/* Центр: просто зона под фон / композицию */
+.center-content {
+  flex: 1;
+  position: relative;
+  /* пример: можно будет сюда добавить фон-картинку */
+  /* background: url('your-image.jpg') center/cover no-repeat; */
+}
+
+/* Нижний левый блок с надписями */
+.bottom-left-block {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  text-align: center;
+  align-items: flex-start;
+  gap: 8px;
+  padding-bottom: 8px;
 }
 
-.item-link {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-transform: lowercase;
-  transition: opacity 0.2s ease, letter-spacing 0.2s ease;
+/* Список названий — у левого края внизу */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0.9;
 }
 
-.item-link:hover {
-  opacity: 0.7;
-  letter-spacing: 4px;
-}
-
-/* Телеграм внизу */
-.footer-link {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-}
-
-.footer-link a {
-  color: white;
-  text-decoration: none;
+/* Ссылка на Telegram */
+.tg-link {
+  margin-top: 8px;
   font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: lowercase;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  color: #bbbbbb;
+  text-decoration: none;
+  opacity: 0.8;
 }
 
-.footer-link a:hover {
+.tg-link:hover {
   opacity: 1;
-}
-
-/* Мобильные */
-@media (max-width: 768px) {
-  .fixed-title {
-    font-size: 14px;
-    letter-spacing: 10px;
-    top: 5px;
-    right: 5px;
-  }
-
-  .center-dot {
-    font-size: 24px;
-    margin-bottom: 18px;
-  }
-
-  .item-link {
-    font-size: 14px;
-    letter-spacing: 1px;
-  }
-
-  .footer-link a {
-    font-size: 11px;
-  }
-
-  .bg-image {
-    transform: scale(1.5);
-  }
-}
-
-/* Планшеты */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .fixed-title {
-    font-size: 18px;
-    letter-spacing: 14px;
-  }
-
-  .bg-image {
-    transform: scale(1.3);
-  }
-}
-
-/* Большие экраны */
-@media (min-width: 1200px) {
-  .fixed-title {
-    font-size: 22px;
-    letter-spacing: 20px;
-    top: 10px;
-    right: 10px;
-  }
-
-  .bg-image {
-    transform: scale(1.1);
-  }
 }
