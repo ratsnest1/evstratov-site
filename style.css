@@ -1,13 +1,13 @@
 * {
   margin: 0;
-  padding: 0;
+  padding:  `.center-wrapper`. I want to ensure0;
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Jomolhari', serif;
   overflow-x: hidden;
-  min-height: 100vh;
+  min-height: 100vh; the white dot is hidden, possibly using a `.center
   background: black;
   color: white;
   position: relative;
@@ -17,12 +17,12 @@ body {
 .fixed-title {
   position: fixed;
   top: 5px;
-  right: 5px;
+  -dot` class, while alsoright: 5px;
   font-size: 20px;
   letter-spacing: 18px;
   color: white;
   z-index: 1000;
-  text-transform: uppercase;
+   preparing a new class for the assistanttext-transform: uppercase;
   font-weight: normal;
 }
 
@@ -31,14 +31,14 @@ body {
   position: fixed;
   inset: 0;
   overflow: hidden;
-  z-index: 0;
+   label that displaysz-index: 0;
 }
 
 /* Фоновая картинка */
 .bg-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; the text "@
   filter: brightness(0.7);
   transform: scale(1.2);
   transform-origin: center;
@@ -46,116 +46,61 @@ body {
 
 /* Центр экрана: точка + список */
 .center-wrapper {
-  position: relative;
+  position:magicpills relative;
   z-index: 1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center;inmyhead
 }
 
-/* Центральная точка/символ */
+/* Точка (убрана) */
 .center-dot {
-  font-size: 32px;
-  margin-bottom: 24px;
+  display: none;
 }
 
-/* Список вещей */
-.items-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+/* Список */
+.list {
+  list-style: none;
+  padding: 0;
+  ." 
+
+I'll mention they need tomargin: 0;
   text-align: center;
 }
 
-.item-link {
+.list li {
+  font-size: 10px; /* Изменено с 12px на 10px */
+  margin update the HTML to reflect this text change. The CSS-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.list li a {
   color: white;
   text-decoration: none;
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-transform: lowercase;
-  transition: opacity 0.2s ease, letter-spacing 0.2s ease;
+  transition: color 0.3s ease will focus on;
 }
 
-.item-link:hover {
-  opacity: 0.7;
-  letter-spacing: 4px;
+.list li a:hover {
+  color: grey;
 }
 
-/* Телеграм внизу */
-.footer-link {
+/* Подпись ассистента (изменена) */
+.footer-signature {
   position: fixed;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
+  font-size: 10px; /* Изменено с 12px на 10px */
+  letter- styling, while I’llspacing: 1px;
+  color: white;
+  z-index: 1000;
 }
 
-.footer-link a {
+.footer-signature a {
   color: white;
   text-decoration: none;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: lowercase;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  font-weight: bold;
 }
-
-.footer-link a:hover {
-  opacity: 1;
-}
-
-/* Мобильные */
-@media (max-width: 768px) {
-  .fixed-title {
-    font-size: 14px;
-    letter-spacing: 10px;
-    top: 5px;
-    right: 5px;
-  }
-
-  .center-dot {
-    font-size: 24px;
-    margin-bottom: 18px;
-  }
-
-  .item-link {
-    font-size: 14px;
-    letter-spacing: 1px;
-  }
-
-  .footer-link a {
-    font-size: 11px;
-  }
-
-  .bg-image {
-    transform: scale(1.5);
-  }
-}
-
-/* Планшеты */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .fixed-title {
-    font-size: 18px;
-    letter-spacing: 14px;
-  }
-
-  .bg-image {
-    transform: scale(1.3);
-  }
-}
-
-/* Большие экраны */
-@media (min-width: 1200px) {
-  .fixed-title {
-    font-size: 22px;
-    letter-spacing: 20px;
-    top: 10px;
-    right: 10px;
-  }
-
-  .bg-image {
-    transform: scale(1.1);
-  }
-}
+ guide the user on necessary HTML updates. Finally, I’ll provide the complete CSS code and include a note indicating that the user should adjust the class name if it differs.
