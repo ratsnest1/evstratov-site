@@ -1,13 +1,13 @@
 * {
   margin: 0;
-  padding:  `.center-wrapper`. I want to ensure0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Jomolhari', serif;
   overflow-x: hidden;
-  min-height: 100vh; the white dot is hidden, possibly using a `.center
+  min-height: 100vh;
   background: black;
   color: white;
   position: relative;
@@ -17,12 +17,12 @@ body {
 .fixed-title {
   position: fixed;
   top: 5px;
-  -dot` class, while alsoright: 5px;
+  right: 5px;
   font-size: 20px;
   letter-spacing: 18px;
   color: white;
   z-index: 1000;
-   preparing a new class for the assistanttext-transform: uppercase;
+  text-transform: uppercase;
   font-weight: normal;
 }
 
@@ -31,76 +31,68 @@ body {
   position: fixed;
   inset: 0;
   overflow: hidden;
-   label that displaysz-index: 0;
+  z-index: 0;
 }
 
 /* Фоновая картинка */
 .bg-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; the text "@
+  object-fit: cover;
   filter: brightness(0.7);
   transform: scale(1.2);
   transform-origin: center;
 }
 
-/* Центр экрана: точка + список */
+/* Центр экрана — контейнер для списка */
 .center-wrapper {
-  position:magicpills relative;
+  position: relative;
   z-index: 1;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;inmyhead
+  justify-content: center;
 }
 
-/* Точка (убрана) */
-.center-dot {
-  display: none;
-}
-
-/* Список */
-.list {
-  list-style: none;
-  padding: 0;
-  ." 
-
-I'll mention they need tomargin: 0;
+/* Вертикальный список ссылок */
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   text-align: center;
 }
 
-.list li {
-  font-size: 10px; /* Изменено с 12px на 10px */
-  margin update the HTML to reflect this text change. The CSS-bottom: 10px;
+.item-link {
+  font-size: 10px;
   letter-spacing: 2px;
-}
-
-.list li a {
   color: white;
   text-decoration: none;
-  transition: color 0.3s ease will focus on;
+  text-transform: lowercase;
+  transition: color 0.3s ease;
 }
 
-.list li a:hover {
+.item-link:hover {
   color: grey;
 }
 
-/* Подпись ассистента (изменена) */
-.footer-signature {
+/* Ссылка на Telegram внизу по центру */
+.footer-link {
   position: fixed;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 10px; /* Изменено с 12px на 10px */
-  letter- styling, while I’llspacing: 1px;
+  font-size: 10px;
+  letter-spacing: 1px;
   color: white;
   z-index: 1000;
 }
 
-.footer-signature a {
+.footer-link a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: normal;
 }
- guide the user on necessary HTML updates. Finally, I’ll provide the complete CSS code and include a note indicating that the user should adjust the class name if it differs.
+
+.footer-link a:hover {
+  color: grey;
+}
