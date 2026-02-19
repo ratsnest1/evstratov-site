@@ -42,9 +42,9 @@ body {
   height: 100%;
   object-fit: cover;
   filter: brightness(0.7);
-  transform: scale(1.2);
+  transform: scale(1.05);
   transform-origin: center;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.4s ease-out;
 }
 
 /* Центр экрана — контейнер для списка */
@@ -75,30 +75,12 @@ body {
   text-decoration: none;
   text-transform: lowercase;
   transition: color 0.3s ease;
-  position: relative;
   cursor: pointer;
   padding: 4px 0;
 }
 
 .item-link:hover {
   color: grey;
-}
-
-/* Подчёркивание при hover */
-.item-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 1px;
-  background: grey;
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
-.item-link:hover::after {
-  width: 100%;
 }
 
 /* Ссылка на Telegram внизу по центру */
