@@ -19,11 +19,13 @@ body {
   top: 5px;
   right: 5px;
   font-size: 12px;
-  letter-spacing: 18px;
+  letter-spacing: 12px;
   color: white;
   z-index: 1000;
   text-transform: uppercase;
   font-weight: normal;
+  opacity: 0;
+  transition: opacity 1.5s ease;
 }
 
 /* Контейнер с фоном */
@@ -42,6 +44,7 @@ body {
   filter: brightness(0.7);
   transform: scale(1.2);
   transform-origin: center;
+  transition: transform 0.3s ease-out;
 }
 
 /* Центр экрана — контейнер для списка */
@@ -60,8 +63,11 @@ body {
   flex-direction: column;
   gap: 10px;
   text-align: center;
+  opacity: 0;
+  animation: fadeIn 2s ease 0.8s forwards;
 }
 
+/* Ссылки */
 .item-link {
   font-size: 10px;
   letter-spacing: 2px;
@@ -69,10 +75,30 @@ body {
   text-decoration: none;
   text-transform: lowercase;
   transition: color 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  padding: 4px 0;
 }
 
 .item-link:hover {
   color: grey;
+}
+
+/* Подчёркивание при hover */
+.item-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: grey;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.item-link:hover::after {
+  width: 100%;
 }
 
 /* Ссылка на Telegram внизу по центру */
@@ -85,14 +111,45 @@ body {
   letter-spacing: 1px;
   color: white;
   z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 2s ease 1.2s forwards;
 }
 
 .footer-link a {
   color: white;
   text-decoration: none;
   font-weight: normal;
+  transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .footer-link a:hover {
   color: grey;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+  .fixed-title {
+    font-size: 9px;
+    letter-spacing: 8px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .item-link {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+
+  .footer-link {
+    font-size: 9px;
+    bottom: 15px;
+  }
 }
