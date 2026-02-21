@@ -13,7 +13,6 @@ body {
   position: relative;
 }
 
-/* Верхний правый угол — имя */
 .fixed-title {
   position: fixed;
   top: 5px;
@@ -28,7 +27,6 @@ body {
   transition: opacity 1s ease;
 }
 
-/* Контейнер с фоном */
 .image-container {
   position: fixed;
   inset: 0;
@@ -36,7 +34,6 @@ body {
   z-index: 0;
 }
 
-/* Фоновая картинка */
 .bg-image {
   width: 100%;
   height: 100%;
@@ -64,14 +61,12 @@ body {
   text-transform: lowercase;
   font-family: 'Jomolhari', serif;
   transition: color 0.5s ease;
+  opacity: 0;
+  animation: fadeIn 1.5s ease 0.8s forwards;
 }
 
 .collections-link:hover {
   color: rgba(255, 255, 255, 0.7);
-}
-
-.collections-link:hover {
-  color: grey;
 }
 
 @keyframes fadeIn {
@@ -80,7 +75,6 @@ body {
   }
 }
 
-/* Ссылка на Telegram внизу по центру */
 .footer-link {
   position: fixed;
   bottom: 10px;
@@ -95,7 +89,6 @@ body {
 .footer-link a {
   color: white;
   text-decoration: none;
-  font-weight: normal;
 }
 
 .footer-link a:hover {
