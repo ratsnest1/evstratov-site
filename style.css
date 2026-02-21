@@ -56,13 +56,17 @@ body {
 .collections-link {
   font-size: 8px;
   letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.25);
+  color: white;
   text-decoration: none;
   text-transform: lowercase;
   font-family: 'Jomolhari', serif;
   transition: color 0.5s ease;
   opacity: 0;
-  animation: fadeIn 1.5s ease 0.8s forwards;
+  animation: fadeIn 3s ease 1.5s forwards;
+}
+
+.collections-link:hover {
+  color: grey;
 }
 
 .collections-link:hover {
