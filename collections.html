@@ -5,18 +5,130 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Collections — Evstratov</title>
-  <link rel="stylesheet" href="collections.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #F9F4E6;
+      color: #1A1A1A;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 15vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 24px;
+      opacity: 0;
+      animation: appear 1.5s ease 0.2s forwards;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .subtitle {
+      margin-top: 6px;
+      font-size: 17px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .info {
+      margin-top: 28px;
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .info span {
+      display: block;
+    }
+
+    .info .dedication {
+      margin-top: 2px;
+    }
+
+    .amen {
+      margin-top: 70px;
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      line-height: 1;
+    }
+
+    @keyframes appear {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding-top: 12vh;
+      }
+
+      .logo {
+        font-size: 22px;
+        letter-spacing: 1.5px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        letter-spacing: 1px;
+        margin-top: 5px;
+      }
+
+      .info {
+        font-size: 9px;
+        margin-top: 24px;
+      }
+
+      .amen {
+        font-size: 9px;
+        margin-top: 55px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <div class="page-wrapper">
-    <div class="content-block">
-      <h1 class="main-title">MAISON EVSTRATOV</h1>
-      <p class="subtitle">Saturday 21 February</p>
-      <p class="dedication">Посвящается Всем, Кого Я Ненавижу.</p>
+  <div class="container">
+    <div class="logo">M. Evstratov</div>
+    <div class="subtitle">un calme soudain dans l'orage sombre</div>
+    <div class="info">
+      <span>Collection I</span>
+      <span>February 2026 21 Sat</span>
+      <span class="dedication">Посвящается Всем, Кого Я Ненавижу.</span>
     </div>
+    <div class="amen">Amen</div>
   </div>
 
 </body>
