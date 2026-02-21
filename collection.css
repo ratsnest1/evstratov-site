@@ -5,98 +5,116 @@
 }
 
 body {
-  font-family: 'Jomolhari', serif;
-  background: black;
-  color: white;
+  background-color: #F9EEDF;
+  color: #1F0A02;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* EVSTRATOV в углу */
-.fixed-title {
+/* Кнопка назад */
+.back-link {
   position: fixed;
-  top: 5px;
-  right: 5px;
-  font-size: 12px;
-  letter-spacing: 18px;
-  text-transform: uppercase;
-  color: white;
-}
-
-/* Заголовок коллекции */
-.collection-header {
-  text-align: center;
-  margin-top: 120px;
-  margin-bottom: 60px;
-}
-
-.collection-header h1 {
-  font-size: 12px;
-  letter-spacing: 4px;
-  font-weight: normal;
-  text-transform: lowercase;
-}
-
-/* Сетка */
-.collection-grid {
-  width: 85%;
-  margin: 0 auto 120px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 60px;
-}
-
-/* Карточка */
-.product-card {
+  top: 20px;
+  left: 25px;
+  font-size: 18px;
+  color: #1F0A02;
   text-decoration: none;
-  color: white;
+  z-index: 100;
+  transition: opacity 0.3s ease;
+  font-family: 'Playfair Display', serif;
+}
+
+.back-link:hover {
+  opacity: 0.4;
+}
+
+/* Обёртка страницы — контент в верхней части */
+.page-wrapper {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  transition: opacity 0.4s ease;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 18vh;
 }
 
-.product-card:hover {
-  opacity: 0.6;
+/* Блок с текстом */
+.content-block {
+  text-align: center;
+  opacity: 0;
+  animation: contentFadeIn 1.8s ease 0.3s forwards;
 }
 
-.product-card img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  filter: brightness(0.85);
+/* Главный заголовок */
+.main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+  color: #1F0A02;
 }
 
-/* Информация */
-.product-info {
-  text-align: left;
-  font-size: 10px;
+/* Разделитель */
+.divider {
+  width: 40px;
+  height: 1px;
+  background-color: #1F0A02;
+  margin: 0 auto 35px auto;
+  opacity: 0.3;
+}
+
+/* Дата */
+.subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-weight: 400;
   letter-spacing: 2px;
+  margin-bottom: 12px;
+  color: #1F0A02;
+  font-style: italic;
 }
 
-.product-name {
-  margin-bottom: 5px;
-  text-transform: lowercase;
+/* Посвящение на русском */
+.dedication {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  line-height: 1.8;
+  color: #1F0A02;
+  opacity: 0.85;
 }
 
-.product-price {
-  opacity: 0.6;
+/* Анимация появления */
+@keyframes contentFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Назад */
-.footer-link {
-  position: fixed;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 10px;
-  letter-spacing: 2px;
-}
+/* Адаптив для мобильных */
+@media (max-width: 600px) {
+  .main-title {
+    font-size: 20px;
+    letter-spacing: 8px;
+  }
 
-.footer-link a {
-  color: white;
-  text-decoration: none;
-}
+  .subtitle {
+    font-size: 11px;
+  }
 
-.footer-link a:hover {
-  color: grey;
+  .dedication {
+    font-size: 13px;
+    padding: 0 20px;
+  }
+
+  .page-wrapper {
+    padding-top: 25vh;
+  }
 }
