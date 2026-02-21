@@ -14,27 +14,15 @@
     }
 
     body {
+      background-color: #F9EEDF;
       color: #1A1A1A;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      position: relative;
-      overflow: hidden;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url('IMG_5185.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: -1;
-    }
-
-    /* EVSTRATOV — сразу видна */
+    /* EVSTRATOV — фиксирован */
     .fixed-title {
       position: fixed;
       top: 5px;
@@ -48,8 +36,8 @@
       font-weight: normal;
     }
 
-    /* Контент — правый верхний угол */
-    .container {
+    /* Инфо блок — фиксирован */
+    .header-info {
       position: fixed;
       top: 35px;
       right: 5px;
@@ -57,8 +45,7 @@
       flex-direction: column;
       align-items: flex-end;
       text-align: right;
-      opacity: 0;
-      animation: appear 1.5s ease 0.4s forwards;
+      z-index: 1000;
     }
 
     .subtitle {
@@ -93,43 +80,108 @@
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      line-height: 1;
     }
 
-    @keyframes appear {
-      0% {
-        opacity: 0;
-        transform: translateY(10px);
+    /* ===== КАТАЛОГ ===== */
+    .catalog {
+      padding: 50px 40px 100px 40px;
+      max-width: 750px;
+    }
+
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .item-card {
+      text-decoration: none;
+      color: #1A1A1A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: opacity 0.4s ease;
+    }
+
+    .item-card:hover {
+      opacity: 0.6;
+    }
+
+    .item-card img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .item-name {
+      margin-top: 8px;
+      font-size: 8px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+
+    .item-price {
+      margin-top: 2px;
+      font-size: 7px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    /* Адаптив */
+    @media (max-width: 768px) {
+      .catalog {
+        padding: 40px 20px 80px 20px;
+        max-width: 100%;
       }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
+
+      .items-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
       }
     }
 
     @media (max-width: 480px) {
+      .items-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        max-width: 250px;
+      }
+
+      .catalog {
+        padding: 35px 15px 60px 15px;
+      }
+
+      .header-info {
+        top: 30px;
+      }
+
       .subtitle {
-        font-size: 8px;
-        letter-spacing: 0.8px;
+        font-size: 7px;
       }
 
       .info {
-        font-size: 6px;
+        font-size: 5.5px;
         margin-top: 12px;
       }
 
       .amen {
-        font-size: 6px;
-        margin-top: 30px;
+        font-size: 5.5px;
+        margin-top: 25px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Фиксированные надписи -->
   <div class="fixed-title">EVSTRATOV</div>
 
-  <div class="container">
+  <div class="header-info">
     <div class="subtitle">un calme soudain dans l'orage sombre</div>
     <div class="info">
       <span>Collection I</span>
@@ -137,6 +189,58 @@
       <span class="dedication">Посвящается Всем, Кого Я Ненавижу.</span>
     </div>
     <div class="amen">Amen</div>
+  </div>
+
+  <!-- Каталог — скроллится -->
+  <div class="catalog">
+    <div class="items-grid">
+
+      <a href="items/item1.html" class="item-card">
+        <img src="photos/coat-1.jpg" alt="Coat">
+        <div class="item-name">Manteau Noir</div>
+        <div class="item-price">upon request</div>
+      </a>
+
+      <a href="items/item2.html" class="item-card">
+        <img src="photos/pants-1.jpg" alt="Pants">
+        <div class="item-name">Pantalon Cendre</div>
+        <div class="item-price">upon request</div>
+      </a>
+
+      <a href="items/item3.html" class="item-card">
+        <img src="photos/shirt-1.jpg" alt="Shirt">
+        <div class="item-name">Chemise Blanche</div>
+        <div class="item-price">upon request</div>
+      </a>
+
+      <a href="items/item4.html" class="item-card">
+        <img src="photos/jacket-1.jpg" alt="Jacket">
+        <div class="item-name">Veste Sombre</div>
+        <div class="item-price">upon request</div>
+      </a>
+
+      <a href="items/item5.html" class="item-card">
+        <img src="photos/scarf-1.jpg" alt="Scarf">
+        <div class="item-name">Écharpe Grise</div>
+        <div class="item-price">upon request</div>
+      </a>
+
+      <a href="items/item6.html" class="item-card">
+        <img src="photos/vest-1.jpg" alt="Vest">
+        <div class="item-name">Gilet Terre</div>
+        <div class="item-price">upon request</div>
+      </a>
+
+      <!-- Добавляй новые: -->
+      <!--
+      <a href="items/item7.html" class="item-card">
+        <img src="photos/фото.jpg" alt="Описание">
+        <div class="item-name">Название</div>
+        <div class="item-price">upon request</div>
+      </a>
+      -->
+
+    </div>
   </div>
 
 </body>
