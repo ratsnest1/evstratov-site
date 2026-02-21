@@ -14,18 +14,19 @@ body {
 }
 
 /* Верхний правый угол — имя */
+/* Добавлено opacity: 0 для плавного появления через JS */
 .fixed-title {
   position: fixed;
   top: 5px;
   right: 5px;
   font-size: 12px;
-  letter-spacing: 12px;
+  letter-spacing: 18px;
   color: white;
   z-index: 1000;
   text-transform: uppercase;
   font-weight: normal;
   opacity: 0;
-  transition: opacity 1.5s ease;
+  transition: opacity 1s ease;
 }
 
 /* Контейнер с фоном */
@@ -42,9 +43,8 @@ body {
   height: 100%;
   object-fit: cover;
   filter: brightness(0.7);
-  transform: scale(1.05);
+  transform: scale(1.2);
   transform-origin: center;
-  transition: transform 0.4s ease-out;
 }
 
 /* Центр экрана — контейнер для списка */
@@ -63,11 +63,8 @@ body {
   flex-direction: column;
   gap: 10px;
   text-align: center;
-  opacity: 0;
-  animation: fadeIn 2s ease 0.8s forwards;
 }
 
-/* Ссылки */
 .item-link {
   font-size: 10px;
   letter-spacing: 2px;
@@ -75,8 +72,6 @@ body {
   text-decoration: none;
   text-transform: lowercase;
   transition: color 0.3s ease;
-  cursor: pointer;
-  padding: 4px 0;
 }
 
 .item-link:hover {
@@ -93,45 +88,14 @@ body {
   letter-spacing: 1px;
   color: white;
   z-index: 1000;
-  opacity: 0;
-  animation: fadeIn 2s ease 1.2s forwards;
 }
 
 .footer-link a {
   color: white;
   text-decoration: none;
   font-weight: normal;
-  transition: color 0.3s ease;
-  cursor: pointer;
 }
 
 .footer-link a:hover {
   color: grey;
-}
-
-/* Анимация появления */
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Мобильная адаптация */
-@media (max-width: 600px) {
-  .fixed-title {
-    font-size: 9px;
-    letter-spacing: 8px;
-    top: 10px;
-    right: 10px;
-  }
-
-  .item-link {
-    font-size: 12px;
-    padding: 8px 0;
-  }
-
-  .footer-link {
-    font-size: 9px;
-    bottom: 15px;
-  }
 }
