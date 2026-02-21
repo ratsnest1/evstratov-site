@@ -11,30 +11,13 @@ body {
   overflow-x: hidden;
 }
 
-/* Кнопка назад */
-.back-link {
-  position: fixed;
-  top: 20px;
-  left: 25px;
-  font-size: 18px;
-  color: #1F0A02;
-  text-decoration: none;
-  z-index: 100;
-  transition: opacity 0.3s ease;
-  font-family: 'Playfair Display', serif;
-}
-
-.back-link:hover {
-  opacity: 0.4;
-}
-
-/* Обёртка страницы — контент в верхней части */
+/* Обёртка — контент высоко */
 .page-wrapper {
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 18vh;
+  padding-top: 10vh;
 }
 
 /* Блок с текстом */
@@ -47,50 +30,40 @@ body {
 /* Главный заголовок */
 .main-title {
   font-family: 'Playfair Display', serif;
-  font-size: 28px;
+  font-size: 11px;
   font-weight: 400;
-  letter-spacing: 12px;
+  letter-spacing: 6px;
   text-transform: uppercase;
-  margin-bottom: 35px;
+  margin-bottom: 4px;
   color: #1F0A02;
-}
-
-/* Разделитель */
-.divider {
-  width: 40px;
-  height: 1px;
-  background-color: #1F0A02;
-  margin: 0 auto 35px auto;
-  opacity: 0.3;
 }
 
 /* Дата */
 .subtitle {
   font-family: 'Playfair Display', serif;
-  font-size: 13px;
+  font-size: 8px;
   font-weight: 400;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
+  letter-spacing: 1.5px;
+  margin-bottom: 2px;
   color: #1F0A02;
   font-style: italic;
 }
 
-/* Посвящение на русском */
+/* Посвящение */
 .dedication {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
+  font-size: 9px;
   font-weight: 400;
-  letter-spacing: 1.5px;
-  line-height: 1.8;
+  letter-spacing: 1px;
+  line-height: 1.4;
   color: #1F0A02;
   opacity: 0.85;
 }
 
-/* Анимация появления */
 @keyframes contentFadeIn {
   0% {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(8px);
   }
   100% {
     opacity: 1;
@@ -98,23 +71,21 @@ body {
   }
 }
 
-/* Адаптив для мобильных */
 @media (max-width: 600px) {
   .main-title {
-    font-size: 20px;
-    letter-spacing: 8px;
+    font-size: 10px;
+    letter-spacing: 5px;
   }
 
   .subtitle {
-    font-size: 11px;
+    font-size: 7px;
   }
 
   .dedication {
-    font-size: 13px;
-    padding: 0 20px;
+    font-size: 8px;
   }
 
   .page-wrapper {
-    padding-top: 25vh;
+    padding-top: 12vh;
   }
 }
