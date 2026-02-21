@@ -17,12 +17,10 @@
       background-color: #F9EEDF;
       color: #1A1A1A;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      min-height: 100vh;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* EVSTRATOV — фиксирован */
     .fixed-title {
       position: fixed;
       top: 5px;
@@ -36,7 +34,6 @@
       font-weight: normal;
     }
 
-    /* Инфо блок — фиксирован */
     .header-info {
       position: fixed;
       top: 35px;
@@ -82,9 +79,23 @@
       letter-spacing: 0.8px;
     }
 
-    /* ===== КАТАЛОГ ===== */
+    /* Первый экран — картинка */
+    .hero {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Каталог */
     .catalog {
-      padding: 50px 40px 100px 40px;
+      padding: 80px 40px 100px 40px;
       max-width: 750px;
     }
 
@@ -132,10 +143,29 @@
       opacity: 0.6;
     }
 
+    /* Смена цвета надписей */
+    .fixed-title,
+    .header-info .subtitle,
+    .header-info .info,
+    .header-info .amen {
+      transition: color 0.5s ease;
+    }
+
+    .fixed-title.light { color: white; }
+    .fixed-title.dark { color: #1A1A1A; }
+
+    .header-info.light .subtitle,
+    .header-info.light .info,
+    .header-info.light .amen { color: white; }
+
+    .header-info.dark .subtitle,
+    .header-info.dark .info,
+    .header-info.dark .amen { color: #1A1A1A; }
+
     /* Адаптив */
     @media (max-width: 768px) {
       .catalog {
-        padding: 40px 20px 80px 20px;
+        padding: 60px 20px 80px 20px;
         max-width: 100%;
       }
 
@@ -153,7 +183,7 @@
       }
 
       .catalog {
-        padding: 35px 15px 60px 15px;
+        padding: 50px 15px 60px 15px;
       }
 
       .header-info {
@@ -178,10 +208,9 @@
 </head>
 <body>
 
-  <!-- Фиксированные надписи -->
-  <div class="fixed-title">EVSTRATOV</div>
+  <div class="fixed-title light">EVSTRATOV</div>
 
-  <div class="header-info">
+  <div class="header-info light">
     <div class="subtitle">un calme soudain dans l'orage sombre</div>
     <div class="info">
       <span>Collection I</span>
@@ -191,7 +220,10 @@
     <div class="amen">Amen</div>
   </div>
 
-  <!-- Каталог — скроллится -->
+  <div class="hero">
+    <img src="IMG_5185.jpeg" alt="Collection I">
+  </div>
+
   <div class="catalog">
     <div class="items-grid">
 
@@ -231,17 +263,30 @@
         <div class="item-price">upon request</div>
       </a>
 
-      <!-- Добавляй новые: -->
-      <!--
-      <a href="items/item7.html" class="item-card">
-        <img src="photos/фото.jpg" alt="Описание">
-        <div class="item-name">Название</div>
-        <div class="item-price">upon request</div>
-      </a>
-      -->
-
     </div>
   </div>
+
+  <script>
+    const title = document.querySelector('.fixed-title');
+    const headerInfo = document.querySelector('.header-info');
+    const hero = document.querySelector('.hero');
+
+    window.addEventListener('scroll', function() {
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+
+      if (window.scrollY > heroBottom - 100) {
+        title.classList.remove('light');
+        title.classList.add('dark');
+        headerInfo.classList.remove('light');
+        headerInfo.classList.add('dark');
+      } else {
+        title.classList.remove('dark');
+        title.classList.add('light');
+        headerInfo.classList.remove('light');
+        headerInfo.classList.add('dark');
+      }
+    });
+  </script>
 
 </body>
 </html>
