@@ -19,15 +19,18 @@
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      /* Чтобы футер не обрезался */
+      min-height: 100vh;
     }
 
+    /* === ЗАГОЛОВОК И ИНФО === */
     .fixed-title {
       position: fixed;
-      top: 5px;
-      right: 5px;
+      top: 15px; /* Чуть опустил, чтобы не прилипало к краю экрана */
+      right: 15px;
       font-family: 'Jomolhari', serif;
       font-size: 12px;
-      letter-spacing: 18px;
+      letter-spacing: 12px; /* Чуть уменьшил разрядку, чтобы влезло на моб */
       color: #1A1A1A;
       z-index: 1000;
       text-transform: uppercase;
@@ -36,8 +39,8 @@
 
     .header-info {
       position: fixed;
-      top: 35px;
-      right: 5px;
+      top: 45px;
+      right: 15px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -52,15 +55,16 @@
       letter-spacing: 1px;
       line-height: 1;
       color: #1A1A1A;
+      margin-bottom: 5px;
     }
 
     .info {
-      margin-top: 16px;
-      font-size: 6.5px;
+      margin-top: 10px;
+      font-size: 7px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      line-height: 1.2;
+      line-height: 1.4;
       text-align: right;
       color: #1A1A1A;
     }
@@ -70,22 +74,26 @@
     }
 
     .info .dedication {
-      margin-top: 1px;
+      margin-top: 4px;
+      opacity: 0.8;
     }
 
     .amen {
-      margin-top: 40px;
-      font-size: 6.5px;
+      margin-top: 25px;
+      font-size: 7px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: #1A1A1A;
     }
 
+    /* === ГЛАВНЫЙ ЭКРАН === */
     .hero {
       width: 100%;
       height: 100vh;
       overflow: hidden;
+      /* Чтобы картинка была фоном и не дергалась */
+      position: relative;
     }
 
     .hero img {
@@ -93,17 +101,21 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      /* Фильтр для атмосферы */
+      filter: sepia(10%) contrast(110%);
     }
 
+    /* === КАТАЛОГ === */
     .catalog {
-      padding: 80px 40px 100px 40px;
-      max-width: 750px;
+      padding: 100px 20px 150px 20px;
+      max-width: 900px;
+      margin: 0 auto; /* Центрируем сам блок каталога */
     }
 
     .items-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
+      gap: 60px 40px; /* Больше отступ между рядами */
     }
 
     .item-card {
@@ -112,11 +124,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: opacity 0.4s ease;
+      transition: all 0.4s ease;
+      position: relative;
     }
 
     .item-card:hover {
-      opacity: 0.6;
+      opacity: 0.7;
+      transform: translateY(-5px);
     }
 
     .item-card img {
@@ -124,129 +138,164 @@
       aspect-ratio: 3 / 4;
       object-fit: cover;
       display: block;
+      /* Убираем рамки, добавляем легкую тень для глубины */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+      filter: grayscale(20%); /* Чуть обесцветим для стиля */
     }
 
     .item-name {
-      margin-top: 8px;
-      font-size: 8px;
-      font-weight: 500;
+      margin-top: 12px;
+      font-family: 'Jomolhari', serif; /* Используем тот же шрифт, что в лого */
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-align: center;
     }
 
     .item-price {
-      margin-top: 2px;
-      font-size: 7px;
+      margin-top: 4px;
+      font-size: 8px;
       font-weight: 400;
       letter-spacing: 1px;
       text-align: center;
-      opacity: 0.6;
+      opacity: 0.5;
+      font-style: italic;
     }
 
+    /* === MEDIA QUERIES === */
     @media (max-width: 768px) {
       .catalog {
         padding: 60px 20px 80px 20px;
-        max-width: 100%;
-      }
-
-      .items-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
       }
     }
 
     @media (max-width: 480px) {
       .items-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        max-width: 250px;
+        grid-template-columns: 1fr; /* Одна колонка на телефоне */
+        gap: 80px; /* Большой отступ между товарами */
+        max-width: 100%;
       }
 
-      .catalog {
-        padding: 50px 15px 60px 15px;
+      .fixed-title {
+        font-size: 10px;
+        letter-spacing: 6px;
+        top: 10px;
+        right: 10px;
       }
-
+      
       .header-info {
-        top: 30px;
+        top: 35px;
+        right: 10px;
       }
 
       .subtitle {
         font-size: 7px;
-      }
-
-      .info {
-        font-size: 5.5px;
-        margin-top: 12px;
-      }
-
-      .amen {
-        font-size: 5.5px;
-        margin-top: 25px;
+        max-width: 150px; /* Чтобы длинный текст переносился красиво */
       }
     }
+
+    /* =========================================
+       ВОТ ТО, ЧЕГО НЕ ХВАТАЛО (ФИЛЬТРЫ)
+       ========================================= */
+    
+    /* 1. ШУМ (ЗЕРНО) */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9998; 
+      opacity: 0.12; /* Регулируй прозрачность шума тут */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      animation: grain 0.5s steps(5) infinite;
+    }
+
+    /* 2. ВИНЬЕТКА */
+    .vignette-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9997;
+      background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(26,26,26,0.2) 100%);
+    }
+
+    @keyframes grain {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-5%, -5%); }
+      30% { transform: translate(3%, -3%); }
+      50% { transform: translate(-3%, 3%); }
+      70% { transform: translate(3%, 3%); }
+      90% { transform: translate(-3%, 3%); }
+    }
+
   </style>
 </head>
 <body>
 
+  <!-- ЛОГОТИП -->
   <div class="fixed-title">EVSTRATOV</div>
 
+  <!-- ИНФОБЛОК СПРАВА -->
   <div class="header-info">
-    <div class="subtitle">un calme soudain dans l'orage sombre</div>
+    <div class="subtitle">un calme soudain<br>dans l'orage sombre</div>
     <div class="info">
       <span>Collection I</span>
-      <span>February 2026 21 Sat</span>
-      <span class="dedication">Посвящается Всем, Кого Я Ненавижу.</span>
+      <span>Feb 2026</span>
+      <span class="dedication">Посвящается Всем,<br>Кого Я Ненавижу.</span>
     </div>
     <div class="amen">Amen</div>
   </div>
 
+  <!-- ГЛАВНОЕ ФОТО (Герой) -->
   <div class="hero">
+    <!-- ВАЖНО: Убедись, что картинка лежит в той же папке или поправь путь -->
     <img src="IMG_5185.jpeg" alt="Collection I">
   </div>
 
+  <!-- КАТАЛОГ -->
   <div class="catalog">
     <div class="items-grid">
 
-      <a href="items/item1.html" class="item-card">
-        <img src="photos/coat-1.jpg" alt="Coat">
+      <!-- Товар 1 -->
+      <a href="#" class="item-card">
+        <!-- Поменял путь на заглушку, поставь свои файлы -->
+        <img src="https://via.placeholder.com/600x800/1a1a1a/333333?text=COAT" alt="Coat">
         <div class="item-name">Manteau Noir</div>
         <div class="item-price">upon request</div>
       </a>
 
-      <a href="items/item2.html" class="item-card">
-        <img src="photos/pants-1.jpg" alt="Pants">
+      <!-- Товар 2 -->
+      <a href="#" class="item-card">
+        <img src="https://via.placeholder.com/600x800/2a2a2a/444444?text=PANTS" alt="Pants">
         <div class="item-name">Pantalon Cendre</div>
         <div class="item-price">upon request</div>
       </a>
 
-      <a href="items/item3.html" class="item-card">
-        <img src="photos/shirt-1.jpg" alt="Shirt">
+      <!-- Товар 3 -->
+      <a href="#" class="item-card">
+        <img src="https://via.placeholder.com/600x800/1a1a1a/333333?text=SHIRT" alt="Shirt">
         <div class="item-name">Chemise Blanche</div>
         <div class="item-price">upon request</div>
       </a>
-
-      <a href="items/item4.html" class="item-card">
-        <img src="photos/jacket-1.jpg" alt="Jacket">
+      
+      <!-- Товар 4 -->
+      <a href="#" class="item-card">
+        <img src="https://via.placeholder.com/600x800/2a2a2a/444444?text=JACKET" alt="Jacket">
         <div class="item-name">Veste Sombre</div>
-        <div class="item-price">upon request</div>
-      </a>
-
-      <a href="items/item5.html" class="item-card">
-        <img src="photos/scarf-1.jpg" alt="Scarf">
-        <div class="item-name">Écharpe Grise</div>
-        <div class="item-price">upon request</div>
-      </a>
-
-      <a href="items/item6.html" class="item-card">
-        <img src="photos/vest-1.jpg" alt="Vest">
-        <div class="item-name">Gilet Terre</div>
         <div class="item-price">upon request</div>
       </a>
 
     </div>
   </div>
-<div class="vignette-overlay"></div>
-<div class="noise-overlay"></div>
+
+  <!-- ЭФФЕКТЫ (ПЛЕНКА И ВИНЬЕТКА) -->
+  <div class="vignette-overlay"></div>
+  <div class="noise-overlay"></div>
+
 </body>
 </html>
