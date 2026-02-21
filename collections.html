@@ -27,14 +27,14 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url('IMG_5188.jpeg');
+      background-image: url('IMG_5185.jpeg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       z-index: -1;
     }
 
-    /* EVSTRATOV — точно как на главной */
+    /* EVSTRATOV — сразу видна */
     .fixed-title {
       position: fixed;
       top: 5px;
@@ -46,8 +46,6 @@
       z-index: 1000;
       text-transform: uppercase;
       font-weight: normal;
-      opacity: 0;
-      transition: opacity 1s ease;
     }
 
     /* Контент — правый верхний угол */
@@ -59,7 +57,6 @@
       flex-direction: column;
       align-items: flex-end;
       text-align: right;
-      padding-right: 0;
       opacity: 0;
       animation: appear 1.5s ease 0.4s forwards;
     }
@@ -130,10 +127,8 @@
 </head>
 <body>
 
-  <!-- EVSTRATOV — как на главной -->
   <div class="fixed-title">EVSTRATOV</div>
 
-  <!-- Контент под EVSTRATOV -->
   <div class="container">
     <div class="subtitle">un calme soudain dans l'orage sombre</div>
     <div class="info">
@@ -143,15 +138,6 @@
     </div>
     <div class="amen">Amen</div>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const title = document.querySelector('.fixed-title');
-      setTimeout(function() {
-        title.style.opacity = '1';
-      }, 500);
-    });
-  </script>
 
 </body>
 </html>
