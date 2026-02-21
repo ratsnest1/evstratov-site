@@ -17,10 +17,6 @@
       color: #1A1A1A;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding-top: 15vh;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       position: relative;
@@ -38,33 +34,42 @@
       z-index: -1;
     }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 24px;
+    /* EVSTRATOV — точно как на главной */
+    .fixed-title {
+      position: fixed;
+      top: 5px;
+      right: 5px;
+      font-family: 'Jomolhari', serif;
+      font-size: 12px;
+      letter-spacing: 18px;
+      color: #1A1A1A;
+      z-index: 1000;
+      text-transform: uppercase;
+      font-weight: normal;
       opacity: 0;
-      animation: appear 1.5s ease 0.2s forwards;
+      transition: opacity 1s ease;
     }
 
-    /* Логотип — шрифт Jomolhari как на главной */
-    .logo {
-      font-family: 'Jomolhari', serif;
-      font-size: 16px;
-      font-weight: normal;
-      text-transform: uppercase;
-      letter-spacing: 8px;
-      line-height: 1;
+    /* Контент — правый верхний угол */
+    .container {
+      position: fixed;
+      top: 35px;
+      right: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      padding-right: 0;
+      opacity: 0;
+      animation: appear 1.5s ease 0.4s forwards;
     }
 
     .subtitle {
-      margin-top: 3px;
       font-size: 9px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
       line-height: 1;
-      text-align: center;
     }
 
     .info {
@@ -74,7 +79,7 @@
       text-transform: uppercase;
       letter-spacing: 0.8px;
       line-height: 1.2;
-      text-align: center;
+      text-align: right;
     }
 
     .info span {
@@ -106,15 +111,6 @@
     }
 
     @media (max-width: 480px) {
-      body {
-        padding-top: 12vh;
-      }
-
-      .logo {
-        font-size: 14px;
-        letter-spacing: 6px;
-      }
-
       .subtitle {
         font-size: 8px;
         letter-spacing: 0.8px;
@@ -134,8 +130,11 @@
 </head>
 <body>
 
+  <!-- EVSTRATOV — как на главной -->
+  <div class="fixed-title">EVSTRATOV</div>
+
+  <!-- Контент под EVSTRATOV -->
   <div class="container">
-    <div class="logo">M. Evstratov</div>
     <div class="subtitle">un calme soudain dans l'orage sombre</div>
     <div class="info">
       <span>Collection I</span>
@@ -144,6 +143,15 @@
     </div>
     <div class="amen">Amen</div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const title = document.querySelector('.fixed-title');
+      setTimeout(function() {
+        title.style.opacity = '1';
+      }, 500);
+    });
+  </script>
 
 </body>
 </html>
