@@ -6,69 +6,89 @@
 
 body {
   background-color: #F9EEDF;
-  color: #1F0A02;
+  color: #1A1A1A;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   min-height: 100vh;
-  overflow-x: hidden;
-  /* Чтобы текст был чуть четче под шумом */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Обёртка — контент высоко */
-.page-wrapper {
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 10vh;
   position: relative;
-  z-index: 1; /* Контент под зерном, но кликабельный */
+  overflow-x: hidden;
 }
 
-/* Блок с текстом */
-.content-block {
-  text-align: center;
-  opacity: 0;
-  animation: contentFadeIn 1.8s ease 0.3s forwards;
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('IMG_5185.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
 }
 
-/* Главный заголовок */
-.main-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 6px;
+.fixed-title {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  font-family: 'Jomolhari', serif;
+  font-size: 12px;
+  letter-spacing: 18px;
+  color: #1A1A1A;
+  z-index: 1000;
   text-transform: uppercase;
-  margin-bottom: 4px;
-  color: #1F0A02;
+  font-weight: normal;
 }
 
-/* Дата */
+.container {
+  position: fixed;
+  top: 35px;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  opacity: 0;
+  animation: appear 1.5s ease 0.4s forwards;
+}
+
 .subtitle {
-  font-family: 'Playfair Display', serif;
-  font-size: 8px;
-  font-weight: 400;
-  letter-spacing: 1.5px;
-  margin-bottom: 2px;
-  color: #1F0A02;
-  font-style: italic;
-}
-
-/* Посвящение */
-.dedication {
-  font-family: 'Cormorant Garamond', serif;
   font-size: 9px;
-  font-weight: 400;
+  font-weight: 700;
+  text-transform: uppercase;
   letter-spacing: 1px;
-  line-height: 1.4;
-  color: #1F0A02;
-  opacity: 0.85;
+  line-height: 1;
 }
 
-@keyframes contentFadeIn {
+.info {
+  margin-top: 16px;
+  font-size: 6.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 1.2;
+  text-align: right;
+}
+
+.info span {
+  display: block;
+}
+
+.info .dedication {
+  margin-top: 1px;
+}
+
+.amen {
+  margin-top: 40px;
+  font-size: 6.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+@keyframes appear {
   0% {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
   }
   100% {
     opacity: 1;
@@ -76,39 +96,22 @@ body {
   }
 }
 
-@media (max-width: 600px) {
-  .main-title {
-    font-size: 10px;
-    letter-spacing: 5px;
+@media (max-width: 480px) {
+  .container {
+    top: 30px;
   }
 
   .subtitle {
     font-size: 7px;
   }
 
-  .dedication {
-    font-size: 8px;
+  .info {
+    font-size: 5.5px;
+    margin-top: 12px;
   }
 
-  .page-wrapper {
-    padding-top: 12vh;
+  .amen {
+    font-size: 5.5px;
+    margin-top: 25px;
   }
 }
-
-/* =========================================
-   FILM GRAIN & VIGNETTE (HOMELESS RENAISSANCE)
-   ========================================= */
-
-/* 1. СЛОЙ ШУМА (ЗЕРНО) */
-.noise-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Пропускает клики */
-  z-index: 9999; 
-  opacity: 0.14; /* <-- Сила шума. Поставь 0.20 если хочешь жестче */
-  
-  /* SVG шум (Base64) */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' 
