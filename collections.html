@@ -2,115 +2,28 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Коллекции – Maison Evstratov</title>
-
-  <!-- Шрифт (тот же, что и на главной) -->
-  <link href="https://fonts.googleapis.com/css2?family=Jomolhari&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    /* ==== Общие стили страницы ==== */
-    body {
-      background:#F9EEDF;               /* цвет фона из вашего задания      */
-      color:#1F0A02;                     /* цвет текста                     */
-      margin:0;
-      padding:0;
-      font-family: 'Jomolhari', serif;
-      overflow-x:hidden;
-      min-height:100vh;
-      display:flex;                     /* гибкая разметка для всего body */
-      flex-direction:column;            /* сверху‑вниз: контент → футер   */
-      align-items:center;               /* центрировать по горизонтали    */
-      justify-content:flex-start;       /* верхняя часть страницы         */
-      padding-top:20vh;                 /* отступ сверху, чтобы блок был   */
-                                        /* примерно в верхней трети       */
-    }
-
-    /* ==== Шапка и подвал (не меняются) ==== */
-    .fixed-title{
-      position:fixed;
-      top:5px;
-      right:5px;
-      font-size:12px;
-      letter-spacing:18px;
-      color:#fff;                       /* оставляем белым, как на главной */
-      z-index:1000;
-      opacity:0;
-      transition:opacity 1s;
-    }
-    .footer-link{
-      position:fixed;
-      bottom:10px;
-      left:50%;
-      transform:translateX(-50%);
-      font-size:10px;
-      letter-spacing:1px;
-      color:#fff;
-      z-index:1000;
-    }
-    .footer-link a{
-      color:#fff;
-      text-decoration:none;
-    }
-    .footer-link a:hover{
-      color:#bbb;
-    }
-
-    /* ==== Блок «MAISON EVSTRATOV» ==== */
-    .hero{
-      max-width:800px;
-      text-align:center;
-    }
-    .hero .title{
-      font-size:24px;
-      letter-spacing:2px;
-      margin-bottom:8px;
-      text-transform:uppercase;
-    }
-    .hero .subtitle{
-      font-size:14px;
-      line-height:1.6;
-    }
-
-    /* Плавное появление после загрузки */
-    .hero{
-      opacity:0;
-      transition:opacity .8s ease;
-    }
-    .hero.show{
-      opacity:1;
-    }
-  </style>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collections — Evstratov</title>
+  <link rel="stylesheet" href="collections.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <!-- Шапка -->
-  <div class="fixed-title">EVSTRATOV</div>
 
-  <!-- Основной блок -->
-  <div class="hero">
-    <div class="title">MAISON EVSTRATOV</div>
-    <div class="subtitle">
-      Saturday 21 February<br>
-      Посвящается Всем, Кого Я Ненавижу
+  <!-- Кнопка назад -->
+  <a href="index.html" class="back-link">←</a>
+
+  <!-- Контент -->
+  <div class="page-wrapper">
+    <div class="content-block">
+      <h1 class="main-title">MAISON EVSTRATOV</h1>
+      <div class="divider"></div>
+      <p class="subtitle">Saturday 21 February</p>
+      <p class="dedication">Посвящается Всем, Кого Я Ненавижу.</p>
     </div>
   </div>
 
-  <!-- Подвал -->
-  <div class="footer-link">
-    <a href="https://t.me/magicpillsinmyhead" target="_blank">@magicpillsinmyhead</a>
-  </div>
-
-  <script>
-    // Плавное появление названия в правом‑верхнем углу
-    document.addEventListener('DOMContentLoaded', () => {
-      const title = document.querySelector('.fixed-title');
-      setTimeout(() => title.style.opacity = '1', 500);
-
-      // Плавное появление блока «MAISON EVSTRATOV»
-      const hero = document.querySelector('.hero');
-      setTimeout(() => hero.classList.add('show'), 800);
-    });
-  </script>
+  <script src="collections.js"></script>
 </body>
 </html>
