@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F9EEDF;
+  color: #1F0A02;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Кнопка назад */
+.back-link {
+  position: fixed;
+  top: 20px;
+  left: 25px;
+  font-size: 18px;
+  color: #1F0A02;
+  text-decoration: none;
+  z-index: 100;
+  transition: opacity 0.3s ease;
+  font-family: 'Playfair Display', serif;
+}
+
+.back-link:hover {
+  opacity: 0.4;
+}
+
+/* Обёртка страницы — контент в верхней части */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 18vh;
+}
+
+/* Блок с текстом */
+.content-block {
+  text-align: center;
+  opacity: 0;
+  animation: contentFadeIn 1.8s ease 0.3s forwards;
+}
+
+/* Главный заголовок */
+.main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+  color: #1F0A02;
+}
+
+/* Разделитель */
+.divider {
+  width: 40px;
+  height: 1px;
+  background-color: #1F0A02;
+  margin: 0 auto 35px auto;
+  opacity: 0.3;
+}
+
+/* Дата */
+.subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  color: #1F0A02;
+  font-style: italic;
+}
+
+/* Посвящение на русском */
+.dedication {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  line-height: 1.8;
+  color: #1F0A02;
+  opacity: 0.85;
+}
+
+/* Анимация появления */
+@keyframes contentFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 600px) {
+  .main-title {
+    font-size: 20px;
+    letter-spacing: 8px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+  }
+
+  .dedication {
+    font-size: 13px;
+    padding: 0 20px;
+  }
+
+  .page-wrapper {
+    padding-top: 25vh;
+  }
+}
