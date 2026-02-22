@@ -37,6 +37,16 @@
       z-index: 1000;
       text-transform: uppercase;
       font-weight: normal;
+      /* Прямоугольник-подложка */
+      background: rgba(0, 0, 0, 0);
+      padding: 6px 12px 6px 14px;
+      transition: background 0.6s ease;
+    }
+
+    .fixed-title.with-bg {
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     .header-info {
@@ -48,6 +58,17 @@
       align-items: flex-end;
       text-align: right;
       z-index: 1000;
+      /* Плавное появление/исчезновение */
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: auto;
+    }
+
+    .header-info.hidden {
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
     }
 
     .subtitle {
@@ -212,9 +233,9 @@
 </head>
 <body>
 
-  <div class="fixed-title">EVSTRATOV</div>
+  <div class="fixed-title" id="title">EVSTRATOV</div>
 
-  <div class="header-info">
+  <div class="header-info" id="headerInfo">
     <div class="subtitle">le saint-esprit est apparu tôt le matin</div>
     <div class="info">
       <span>Collection I</span>
@@ -281,6 +302,8 @@
   <script>
     const scroll = document.getElementById('scroll');
     const indicator = document.querySelector('.page-indicator');
+    const headerInfo = document.getElementById('headerInfo');
+    const title = document.getElementById('title');
     const total = 6;
     let current = 0;
     let isAnimating = false;
@@ -291,6 +314,16 @@
       current = index;
       scroll.style.transform = `translateX(-${current * 100}vw)`;
       indicator.textContent = `${current + 1} / ${total}`;
+
+      // После первого слайда — прячем инфо, показываем подложку
+      if (current > 0) {
+        headerInfo.classList.add('hidden');
+        title.classList.add('with-bg');
+      } else {
+        headerInfo.classList.remove('hidden');
+        title.classList.remove('with-bg');
+      }
+
       setTimeout(() => { isAnimating = false; }, 800);
     }
 
