@@ -161,14 +161,42 @@
     }
 
     .diptych-right {
-      width: 50vw;
-      height: 100vh;
-      overflow: hidden;
-      background-color: #F9EEDF;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
+  width: 50vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #F9EEDF;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* 75% фото */
+.cloth-photo {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2vw;
+  flex-shrink: 0;
+}
+
+.cloth-photo img {
+  max-height: 90%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* 25% текст */
+.cloth-info {
+  width: 25%;
+  padding: 0 1vw;
+  font-family: 'Cormorant Garamond', serif;
+  color: #1A1A1A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
     .cloth-photo {
       height: 90%;
