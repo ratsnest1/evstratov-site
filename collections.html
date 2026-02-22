@@ -26,7 +26,7 @@
       overflow: hidden;
     }
 
-    /* ЗАГОЛОВОК */
+    /* --- ЗАГОЛОВОК (Стили из вашего примера + настройки фона) --- */
     .fixed-title {
       position: fixed;
       top: 5px;
@@ -38,36 +38,43 @@
       z-index: 1000;
       text-transform: uppercase;
       font-weight: normal;
-      
-      /* Добавляем отступы заранее, чтобы текст не смещался при появлении фона */
-      padding: 4px 10px;
-      /* Плавный переход для фона */
-      transition: background-color 0.5s ease; 
+
+      /* Добавляем отступы, чтобы черный прямоугольник был чуть шире текста */
+      padding: 5px 10px;
+      /* Изначально фон прозрачный */
+      background-color: transparent;
+      /* Плавное появление фона */
+      transition: background-color 0.5s ease;
     }
 
-    /* Класс для черного прямоугольника */
+    /* Класс, который добавляет черный фон */
     .fixed-title.title-bg {
       background-color: #000;
     }
 
+    /* --- БЛОК С ИНФОРМАЦИЕЙ --- */
     .header-info {
       position: fixed;
-      top: 35px;
-      right: 5px;
+      top: 40px; /* Чуть ниже, чтобы не наезжать на прямоугольник заголовка */
+      right: 15px; /* Выравниваем визуально по тексту */
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       text-align: right;
-      z-index: 1000;
-      /* Плавное исчезновение */
+      z-index: 900;
       transition: opacity 0.5s ease;
       opacity: 1;
     }
 
-    /* Класс для скрытия элементов */
+    /* Класс для скрытия блока инфо */
     .hidden {
       opacity: 0;
-      pointer-events: none; /* Чтобы нельзя было выделить скрытый текст */
+      pointer-events: none;
+    }
+
+    /* Класс для скрытия конкретно элемента (для Amen) */
+    .hidden-element {
+      display: none;
     }
 
     .subtitle {
@@ -77,15 +84,15 @@
       letter-spacing: 1px;
       line-height: 1;
       color: white;
+      margin-bottom: 15px;
     }
 
     .info {
-      margin-top: 16px;
       font-size: 6.5px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      line-height: 1.2;
+      line-height: 1.4;
       text-align: right;
       color: white;
     }
@@ -94,20 +101,16 @@
       display: block;
     }
 
-    .info .dedication {
-      margin-top: 1px;
-    }
-
     .header-amen {
-      margin-top: 40px;
+      margin-top: 25px;
       font-size: 6.5px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: white;
-      transition: opacity 0.5s ease; /* Отдельная анимация для Amen */
     }
 
+    /* --- СЛАЙДЕР --- */
     .horizontal-scroll {
       display: flex;
       height: 100vh;
@@ -198,33 +201,11 @@
       z-index: 1000;
     }
 
-    @media (max-width: 768px) {
-      .header-info {
-        top: 30px;
-      }
-
-      .subtitle {
-        font-size: 7px;
-      }
-
-      .info {
-        font-size: 5.5px;
-        margin-top: 12px;
-      }
-
-      .header-amen {
-        font-size: 5.5px;
-        margin-top: 25px;
-      }
-    }
-
     @media (max-width: 480px) {
       .diptych {
         flex-direction: column;
       }
-
-      .diptych-left,
-      .diptych-right {
+      .diptych-left, .diptych-right {
         width: 100vw;
         height: 50vh;
       }
@@ -233,8 +214,10 @@
 </head>
 <body>
 
+  <!-- Заголовок -->
   <div class="fixed-title" id="mainTitle">EVSTRATOV</div>
 
+  <!-- Блок с информацией -->
   <div class="header-info" id="headerInfo">
     <div class="subtitle">le saint-esprit est apparu tôt le matin</div>
     <div class="info">
@@ -247,58 +230,43 @@
 
   <div class="page-indicator">1 / 6</div>
 
+  <!-- Слайдер -->
   <div class="horizontal-scroll" id="scroll">
 
-    <!-- Slide 1 (Index 0) -->
+    <!-- 1. Hero -->
     <div class="hero-slide">
       <img src="IMG_5185.jpeg" alt="Collection I">
     </div>
 
-    <!-- Slide 2 (Index 1) -->
+    <!-- 2. Look I -->
     <div class="diptych">
-      <div class="diptych-left">
-        <img src="IMG_1.jpeg" alt="Theatre">
-      </div>
-      <div class="diptych-right">
-        <img src="IMG_2.jpeg" alt="Look 1">
-      </div>
+      <div class="diptych-left"><img src="IMG_1.jpeg" alt=""></div>
+      <div class="diptych-right"><img src="IMG_2.jpeg" alt=""></div>
       <div class="item-label">Look I</div>
     </div>
 
-    <!-- Slide 3 (Index 2) -->
+    <!-- 3. Look II -->
     <div class="diptych">
-      <div class="diptych-left">
-        <img src="IMG_3.jpeg" alt="Theatre">
-      </div>
-      <div class="diptych-right">
-        <img src="IMG_4.jpeg" alt="Look 2">
-      </div>
+      <div class="diptych-left"><img src="IMG_3.jpeg" alt=""></div>
+      <div class="diptych-right"><img src="IMG_4.jpeg" alt=""></div>
       <div class="item-label">Look II</div>
     </div>
 
-    <!-- Slide 4 (Index 3) -->
+    <!-- 4. Look III -->
     <div class="diptych">
-      <div class="diptych-left">
-        <img src="IMG_5.jpeg" alt="Theatre">
-      </div>
-      <div class="diptych-right">
-        <img src="IMG_6.jpeg" alt="Look 3">
-      </div>
+      <div class="diptych-left"><img src="IMG_5.jpeg" alt=""></div>
+      <div class="diptych-right"><img src="IMG_6.jpeg" alt=""></div>
       <div class="item-label">Look III</div>
     </div>
 
-    <!-- Slide 5 (Index 4) -->
+    <!-- 5. Look IV -->
     <div class="diptych">
-      <div class="diptych-left">
-        <img src="IMG_7.jpeg" alt="Theatre">
-      </div>
-      <div class="diptych-right">
-        <img src="IMG_8.jpeg" alt="Look 4">
-      </div>
+      <div class="diptych-left"><img src="IMG_7.jpeg" alt=""></div>
+      <div class="diptych-right"><img src="IMG_8.jpeg" alt=""></div>
       <div class="item-label">Look IV</div>
     </div>
 
-    <!-- Slide 6 (Index 5) - Last -->
+    <!-- 6. Final -->
     <div class="final-slide">
       <div class="final-amen">Amen</div>
     </div>
@@ -309,10 +277,10 @@
     const scroll = document.getElementById('scroll');
     const indicator = document.querySelector('.page-indicator');
     
-    // Получаем элементы для управления
+    // Элементы для управления
+    const mainTitle = document.getElementById('mainTitle');
     const headerInfo = document.getElementById('headerInfo');
     const headerAmen = document.getElementById('headerAmen');
-    const mainTitle = document.getElementById('mainTitle');
 
     const total = 6;
     let current = 0;
@@ -323,59 +291,53 @@
       isAnimating = true;
       current = index;
       
-      // Скролл
       scroll.style.transform = `translateX(-${current * 100}vw)`;
       indicator.textContent = `${current + 1} / ${total}`;
 
-      // --- ЛОГИКА ОТОБРАЖЕНИЯ ЭЛЕМЕНТОВ ---
-      
+      // --- ЛОГИКА ---
+
       if (current === 0) {
-        // Сценарий 1: Самая первая страница
-        // Показываем всё, убираем черный фон у заголовка
-        headerInfo.classList.remove('hidden');
-        headerAmen.classList.remove('hidden');
+        // СЛАЙД 1:
+        // 1. У заголовка НЕТ фона
         mainTitle.classList.remove('title-bg');
-      
-      } else if (current === total - 1) {
-        // Сценарий 2: Самая последняя страница (6)
-        // Возвращаем надписи, но скрываем верхний "Amen"
-        // Заголовок остается с черным фоном (или добавляется)
+        // 2. Инфо ВИДНО полностью
         headerInfo.classList.remove('hidden');
-        headerAmen.classList.add('hidden'); // Скрываем только слово Amen
+        headerAmen.style.display = 'block';
+
+      } else if (current === total - 1) {
+        // ПОСЛЕДНИЙ СЛАЙД (6):
+        // 1. У заголовка ЕСТЬ фон
         mainTitle.classList.add('title-bg');
+        // 2. Инфо ВИДНО
+        headerInfo.classList.remove('hidden');
+        // 3. Но скрываем слово Amen (так как оно есть по центру экрана)
+        headerAmen.style.display = 'none';
 
       } else {
-        // Сценарий 3: Промежуточные страницы (2, 3, 4, 5)
-        // Скрываем все надписи под заголовком
-        // Заголовок получает черный фон
-        headerInfo.classList.add('hidden');
+        // СЕРЕДИНА (2, 3, 4, 5):
+        // 1. У заголовка ЕСТЬ фон
         mainTitle.classList.add('title-bg');
+        // 2. Инфо СКРЫТО полностью
+        headerInfo.classList.add('hidden');
+        headerAmen.style.display = 'block'; // возвращаем свойство display на будущее
       }
-      // -------------------------------------
 
       setTimeout(() => { isAnimating = false; }, 800);
     }
 
-    // Обработчик колесика мыши
+    // --- Управление ---
+
     window.addEventListener('wheel', function(e) {
       e.preventDefault();
-      if (e.deltaY > 0 || e.deltaX > 0) {
-        goTo(current + 1);
-      } else {
-        goTo(current - 1);
-      }
+      if (e.deltaY > 0 || e.deltaX > 0) goTo(current + 1);
+      else goTo(current - 1);
     }, { passive: false });
 
-    // Клавиатура
     window.addEventListener('keydown', function(e) {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        goTo(current + 1);
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        goTo(current - 1);
-      }
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
     });
 
-    // Тач (телефоны)
     let touchStartX = 0;
     let touchStartY = 0;
 
@@ -384,19 +346,13 @@
       touchStartY = e.touches[0].clientY;
     }, { passive: false });
 
-    window.addEventListener('touchmove', function(e) {
-      e.preventDefault();
-    }, { passive: false });
+    window.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
 
     window.addEventListener('touchend', function(e) {
       const deltaX = touchStartX - e.changedTouches[0].clientX;
       const deltaY = touchStartY - e.changedTouches[0].clientY;
-
-      if (deltaX > 40 || deltaY > 40) {
-        goTo(current + 1);
-      } else if (deltaX < -40 || deltaY < -40) {
-        goTo(current - 1);
-      }
+      if (deltaX > 40 || deltaY > 40) goTo(current + 1);
+      else if (deltaX < -40 || deltaY < -40) goTo(current - 1);
     });
   </script>
 
