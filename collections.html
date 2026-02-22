@@ -26,7 +26,7 @@
       overflow: hidden;
     }
 
-    /* --- ЗАГОЛОВОК (Стили из вашего примера + настройки фона) --- */
+    /* --- ЗАГОЛОВОК --- */
     .fixed-title {
       position: fixed;
       top: 5px;
@@ -38,16 +38,19 @@
       z-index: 1000;
       text-transform: uppercase;
       font-weight: normal;
-
-      /* Добавляем отступы, чтобы черный прямоугольник был чуть шире текста */
+      white-space: nowrap; /* Запрещаем перенос строки */
+      
+      /* ВАЖНО: Задаем отступы сразу. 
+         Фон прозрачный, но место под него зарезервировано.
+         Текст не сдвинется ни на пиксель при смене цвета. */
       padding: 5px 10px;
-      /* Изначально фон прозрачный */
       background-color: transparent;
-      /* Плавное появление фона */
+      
+      /* Плавная смена цвета фона */
       transition: background-color 0.5s ease;
     }
 
-    /* Класс, который добавляет черный фон */
+    /* Состояние с черным фоном */
     .fixed-title.title-bg {
       background-color: #000;
     }
@@ -55,26 +58,24 @@
     /* --- БЛОК С ИНФОРМАЦИЕЙ --- */
     .header-info {
       position: fixed;
-      top: 40px; /* Чуть ниже, чтобы не наезжать на прямоугольник заголовка */
-      right: 15px; /* Выравниваем визуально по тексту */
+      /* Высчитываем отступ: 5px(top) + высота текста + отступы ~ 30-35px */
+      top: 38px; 
+      /* Выравниваем по правому краю, учитывая letter-spacing заголовка */
+      right: 15px; 
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       text-align: right;
       z-index: 900;
+      
+      /* Плавное исчезновение */
       transition: opacity 0.5s ease;
       opacity: 1;
     }
 
-    /* Класс для скрытия блока инфо */
     .hidden {
       opacity: 0;
       pointer-events: none;
-    }
-
-    /* Класс для скрытия конкретно элемента (для Amen) */
-    .hidden-element {
-      display: none;
     }
 
     .subtitle {
@@ -84,7 +85,7 @@
       letter-spacing: 1px;
       line-height: 1;
       color: white;
-      margin-bottom: 15px;
+      margin-bottom: 15px; /* Отступ до даты */
     }
 
     .info {
@@ -102,15 +103,16 @@
     }
 
     .header-amen {
-      margin-top: 25px;
+      margin-top: 25px; /* Отступ до Amen */
       font-size: 6.5px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: white;
+      /* Чтобы скрывать Amen отдельно через display: none в JS */
     }
 
-    /* --- СЛАЙДЕР --- */
+    /* --- СЛАЙДЕР (без изменений) --- */
     .horizontal-scroll {
       display: flex;
       height: 100vh;
@@ -209,15 +211,19 @@
         width: 100vw;
         height: 50vh;
       }
+      
+      /* Небольшая коррекция для мобильных, если текст слишком широкий */
+      .fixed-title {
+         font-size: 11px; /* Чуть меньше на маленьких экранах, чтобы влезло */
+         letter-spacing: 14px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Заголовок -->
   <div class="fixed-title" id="mainTitle">EVSTRATOV</div>
 
-  <!-- Блок с информацией -->
   <div class="header-info" id="headerInfo">
     <div class="subtitle">le saint-esprit est apparu tôt le matin</div>
     <div class="info">
@@ -230,54 +236,50 @@
 
   <div class="page-indicator">1 / 6</div>
 
-  <!-- Слайдер -->
   <div class="horizontal-scroll" id="scroll">
-
-    <!-- 1. Hero -->
+    <!-- Слайд 1 -->
     <div class="hero-slide">
       <img src="IMG_5185.jpeg" alt="Collection I">
     </div>
 
-    <!-- 2. Look I -->
+    <!-- Слайд 2 -->
     <div class="diptych">
       <div class="diptych-left"><img src="IMG_1.jpeg" alt=""></div>
       <div class="diptych-right"><img src="IMG_2.jpeg" alt=""></div>
       <div class="item-label">Look I</div>
     </div>
 
-    <!-- 3. Look II -->
+    <!-- Слайд 3 -->
     <div class="diptych">
       <div class="diptych-left"><img src="IMG_3.jpeg" alt=""></div>
       <div class="diptych-right"><img src="IMG_4.jpeg" alt=""></div>
       <div class="item-label">Look II</div>
     </div>
 
-    <!-- 4. Look III -->
+    <!-- Слайд 4 -->
     <div class="diptych">
       <div class="diptych-left"><img src="IMG_5.jpeg" alt=""></div>
       <div class="diptych-right"><img src="IMG_6.jpeg" alt=""></div>
       <div class="item-label">Look III</div>
     </div>
 
-    <!-- 5. Look IV -->
+    <!-- Слайд 5 -->
     <div class="diptych">
       <div class="diptych-left"><img src="IMG_7.jpeg" alt=""></div>
       <div class="diptych-right"><img src="IMG_8.jpeg" alt=""></div>
       <div class="item-label">Look IV</div>
     </div>
 
-    <!-- 6. Final -->
+    <!-- Слайд 6 (Финал) -->
     <div class="final-slide">
       <div class="final-amen">Amen</div>
     </div>
-
   </div>
 
   <script>
     const scroll = document.getElementById('scroll');
     const indicator = document.querySelector('.page-indicator');
     
-    // Элементы для управления
     const mainTitle = document.getElementById('mainTitle');
     const headerInfo = document.getElementById('headerInfo');
     const headerAmen = document.getElementById('headerAmen');
@@ -294,39 +296,31 @@
       scroll.style.transform = `translateX(-${current * 100}vw)`;
       indicator.textContent = `${current + 1} / ${total}`;
 
-      // --- ЛОГИКА ---
+      // --- ЛОГИКА ОТОБРАЖЕНИЯ ---
 
       if (current === 0) {
-        // СЛАЙД 1:
-        // 1. У заголовка НЕТ фона
+        // Слайд 1: Прозрачный фон заголовка, текст виден
         mainTitle.classList.remove('title-bg');
-        // 2. Инфо ВИДНО полностью
         headerInfo.classList.remove('hidden');
         headerAmen.style.display = 'block';
 
       } else if (current === total - 1) {
-        // ПОСЛЕДНИЙ СЛАЙД (6):
-        // 1. У заголовка ЕСТЬ фон
+        // Последний слайд (6): Черный фон заголовка, текст виден, Amen скрыт
         mainTitle.classList.add('title-bg');
-        // 2. Инфо ВИДНО
         headerInfo.classList.remove('hidden');
-        // 3. Но скрываем слово Amen (так как оно есть по центру экрана)
         headerAmen.style.display = 'none';
 
       } else {
-        // СЕРЕДИНА (2, 3, 4, 5):
-        // 1. У заголовка ЕСТЬ фон
+        // Середина (2-5): Черный фон заголовка, текст под ним скрыт полностью
         mainTitle.classList.add('title-bg');
-        // 2. Инфо СКРЫТО полностью
         headerInfo.classList.add('hidden');
-        headerAmen.style.display = 'block'; // возвращаем свойство display на будущее
+        headerAmen.style.display = 'block'; // Сброс для возврата назад
       }
 
       setTimeout(() => { isAnimating = false; }, 800);
     }
 
-    // --- Управление ---
-
+    // Управление
     window.addEventListener('wheel', function(e) {
       e.preventDefault();
       if (e.deltaY > 0 || e.deltaX > 0) goTo(current + 1);
