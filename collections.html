@@ -39,18 +39,20 @@
       font-weight: normal;
     }
 
-    .title-bg {
-      position: fixed;
-      top: 0;
-      right: 0;
-      padding: 4px 5px 6px 12px;
+    .fixed-title::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      right: -5px;
+      bottom: -4px;
+      left: -12px;
       background: #000;
-      z-index: 1000;
+      z-index: -1;
       opacity: 0;
       transition: opacity 0.5s ease;
     }
 
-    .title-bg.visible {
+    .fixed-title.with-bg::before {
       opacity: 1;
     }
 
@@ -239,8 +241,6 @@
 </head>
 <body>
 
-  <div class="title-bg" id="titleBg"></div>
-
   <div class="fixed-title">EVSTRATOV</div>
 
   <div class="header-info" id="headerInfo">
@@ -311,7 +311,7 @@
     const scroll = document.getElementById('scroll');
     const indicator = document.getElementById('pageIndicator');
     const headerInfo = document.getElementById('headerInfo');
-    const titleBg = document.getElementById('titleBg');
+    const fixedTitle = document.querySelector('.fixed-title');
     const headerAmen = document.querySelector('.header-amen');
     const total = 6;
     let current = 0;
@@ -320,11 +320,11 @@
     function updateUI() {
       if (current >= 1 && current <= 4) {
         headerInfo.classList.add('hidden');
-        titleBg.classList.add('visible');
+        fixedTitle.classList.add('with-bg');
         indicator.classList.add('hidden');
       } else {
         headerInfo.classList.remove('hidden');
-        titleBg.classList.remove('visible');
+        fixedTitle.classList.remove('with-bg');
         indicator.classList.remove('hidden');
       }
 
