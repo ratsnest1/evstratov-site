@@ -161,90 +161,56 @@
     }
 
     .diptych-right {
-  width: 50vw;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #F9EEDF;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-/* 75% фото */
-.cloth-photo {
-  width: 75%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;   /* смещаем влево */
-  padding-left: 0;               /* убираем отступ */
-}
-
-.cloth-photo img {
-  height: 100%;                  /* делаем больше */
-  max-height: 95%;
-  width: auto;
-  object-fit: contain;
-}
-
-/* 25% текст */
-.cloth-info {
-  width: 25%;
-  padding: 0 1vw;
-  font-family: 'Cormorant Garamond', serif;
-  color: #1A1A1A;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-    .cloth-photo {
-      height: 90%;
+      width: 50vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #F9EEDF;
       display: flex;
       align-items: center;
-      padding-left: 2vw;
-      flex-shrink: 0;
+      justify-content: center;
+      position: relative;
     }
 
-    .cloth-photo img {
-      max-height: 100%;
-      max-width: 38vw;
+    .diptych-right img {
+      max-width: 96%;
+      max-height: 96%;
       object-fit: contain;
       display: block;
     }
 
-   .cloth-info {
-  width: 25%;
-  padding: 0 1.5vw;
-  font-family: 'Cormorant Garamond', serif;
-  color: #1A1A1A;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+    .cloth-info {
+      position: absolute;
+      bottom: 20px;
+      right: 15px;
+      font-family: 'Cormorant Garamond', serif;
+      color: #1A1A1A;
+      text-align: right;
+    }
 
-/* увеличиваем шрифт */
-.cloth-name {
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 10px;
-}
+    .cloth-name {
+      font-size: 7px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 3px;
+    }
 
-.cloth-desc {
-  font-size: 10px;
-  font-weight: 400;
-  line-height: 1.6;
-  margin-bottom: 12px;
-  opacity: 0.9;
-}
+    .cloth-desc {
+      font-size: 5.5px;
+      font-weight: 300;
+      line-height: 1.4;
+      letter-spacing: 0.2px;
+      margin-bottom: 4px;
+      opacity: 0.7;
+    }
 
-.cloth-details {
-  font-size: 9px;
-  line-height: 1.6;
-  opacity: 0.6;
-}
+    .cloth-details {
+      font-size: 5px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.2px;
+      opacity: 0.4;
+    }
 
     .cloth-details span {
       display: block;
@@ -319,22 +285,6 @@
         font-size: 5.5px;
         margin-top: 25px;
       }
-
-      .cloth-photo img {
-        max-width: 34vw;
-      }
-
-      .cloth-name {
-        font-size: 6px;
-      }
-
-      .cloth-desc {
-        font-size: 5.5px;
-      }
-
-      .cloth-details {
-        font-size: 5px;
-      }
     }
 
     @media (max-width: 480px) {
@@ -352,18 +302,14 @@
         height: 55vh;
       }
 
-      .cloth-photo {
-        padding-left: 3vw;
-      }
-
-      .cloth-photo img {
-        max-width: 45vw;
+      .diptych-right img {
+        max-width: 90%;
         max-height: 90%;
       }
 
       .cloth-info {
-        padding-left: 2vw;
-        padding-right: 2vw;
+        bottom: 10px;
+        right: 10px;
       }
 
       .cloth-name {
@@ -371,11 +317,11 @@
       }
 
       .cloth-desc {
-        font-size: 5.5px;
+        font-size: 5px;
       }
 
       .cloth-details {
-        font-size: 5px;
+        font-size: 4.5px;
       }
     }
   </style>
@@ -404,14 +350,13 @@
     <div class="diptych">
       <div class="diptych-left"><img src="IMG_1.jpeg"></div>
       <div class="diptych-right">
-        <div class="cloth-photo"><img src="IMG_2.jpeg"></div>
+        <img src="IMG_2.jpeg">
         <div class="cloth-info">
           <div class="cloth-name">Look I</div>
-          <div class="cloth-desc">Пальто из плотной<br>шерсти. Свободный<br>силуэт.</div>
+          <div class="cloth-desc">Пальто из плотной<br>шерсти. Свободный силуэт.</div>
           <div class="cloth-details">
             <span>Шерсть 100%</span>
-            <span>Noir</span>
-            <span>AW26</span>
+            <span>Noir — AW26</span>
           </div>
         </div>
       </div>
@@ -421,14 +366,13 @@
     <div class="diptych">
       <div class="diptych-left"><img src="IMG_3.jpeg"></div>
       <div class="diptych-right">
-        <div class="cloth-photo"><img src="IMG_4.jpeg"></div>
+        <img src="IMG_4.jpeg">
         <div class="cloth-info">
           <div class="cloth-name">Look II</div>
-          <div class="cloth-desc">Брюки широкого<br>кроя. Высокая<br>посадка.</div>
+          <div class="cloth-desc">Брюки широкого кроя.<br>Высокая посадка.</div>
           <div class="cloth-details">
             <span>Хлопок 100%</span>
-            <span>Cendre</span>
-            <span>AW26</span>
+            <span>Cendre — AW26</span>
           </div>
         </div>
       </div>
@@ -438,14 +382,13 @@
     <div class="diptych">
       <div class="diptych-left"><img src="IMG_5.jpeg"></div>
       <div class="diptych-right">
-        <div class="cloth-photo"><img src="IMG_6.jpeg"></div>
+        <img src="IMG_6.jpeg">
         <div class="cloth-info">
           <div class="cloth-name">Look III</div>
-          <div class="cloth-desc">Рубашка из тонкого<br>хлопка. Удлинённый<br>крой.</div>
+          <div class="cloth-desc">Рубашка из тонкого<br>хлопка. Удлинённый крой.</div>
           <div class="cloth-details">
             <span>Хлопок 100%</span>
-            <span>Blanc</span>
-            <span>AW26</span>
+            <span>Blanc — AW26</span>
           </div>
         </div>
       </div>
@@ -455,14 +398,13 @@
     <div class="diptych">
       <div class="diptych-left"><img src="IMG_7.jpeg"></div>
       <div class="diptych-right">
-        <div class="cloth-photo"><img src="IMG_8.jpeg"></div>
+        <img src="IMG_8.jpeg">
         <div class="cloth-info">
           <div class="cloth-name">Look IV</div>
-          <div class="cloth-desc">Жакет без подкладки.<br>Острые плечи.<br>Ручная работа.</div>
+          <div class="cloth-desc">Жакет без подкладки.<br>Острые плечи. Ручная работа.</div>
           <div class="cloth-details">
             <span>Шерсть 100%</span>
-            <span>Sombre</span>
-            <span>AW26</span>
+            <span>Sombre — AW26</span>
           </div>
         </div>
       </div>
