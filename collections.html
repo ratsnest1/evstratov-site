@@ -93,6 +93,23 @@
       transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
+    /* Первый слайд — полноэкранная картинка */
+    .hero-slide {
+      flex-shrink: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: invert(1) hue-rotate(180deg);
+    }
+
+    /* Диптихи */
     .diptych {
       display: flex;
       flex-shrink: 0;
@@ -130,7 +147,7 @@
       white-space: nowrap;
     }
 
-    /* Финальный слайд AMEN */
+    /* Финальный слайд */
     .final-slide {
       flex-shrink: 0;
       width: 100vw;
@@ -210,10 +227,16 @@
     <div class="header-amen">Amen</div>
   </div>
 
-  <div class="page-indicator">1 / 5</div>
+  <div class="page-indicator">1 / 6</div>
 
   <div class="horizontal-scroll" id="scroll">
 
+    <!-- Первый слайд — картинка храма -->
+    <div class="hero-slide">
+      <img src="IMG_5185.jpeg" alt="Collection I">
+    </div>
+
+    <!-- Диптих 1 -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="photos/theatre-1.jpg" alt="Theatre">
@@ -224,6 +247,7 @@
       <div class="item-label">Manteau Noir</div>
     </div>
 
+    <!-- Диптих 2 -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="photos/theatre-2.jpg" alt="Theatre">
@@ -234,6 +258,7 @@
       <div class="item-label">Pantalon Cendre</div>
     </div>
 
+    <!-- Диптих 3 -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="photos/theatre-3.jpg" alt="Theatre">
@@ -244,6 +269,7 @@
       <div class="item-label">Chemise Blanche</div>
     </div>
 
+    <!-- Диптих 4 -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="photos/theatre-4.jpg" alt="Theatre">
@@ -264,7 +290,7 @@
   <script>
     const scroll = document.getElementById('scroll');
     const indicator = document.querySelector('.page-indicator');
-    const total = 5;
+    const total = 6;
     let current = 0;
     let isAnimating = false;
 
