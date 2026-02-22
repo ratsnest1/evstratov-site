@@ -171,51 +171,54 @@
     }
 
     .cloth-photo {
-      height: 85%;
+      height: 90%;
       display: flex;
       align-items: center;
-      padding-left: 3vw;
+      padding-left: 2vw;
+      flex-shrink: 0;
     }
 
     .cloth-photo img {
       max-height: 100%;
-      max-width: 28vw;
+      max-width: 38vw;
       object-fit: contain;
       display: block;
     }
 
     .cloth-info {
-      padding-left: 2vw;
-      padding-right: 2vw;
+      padding-left: 1vw;
+      padding-right: 1vw;
       font-family: 'Cormorant Garamond', serif;
       color: #1A1A1A;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      flex-shrink: 1;
+      min-width: 0;
     }
 
     .cloth-name {
-      font-size: 9px;
+      font-size: 7px;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
+      letter-spacing: 1.5px;
+      margin-bottom: 5px;
     }
 
     .cloth-desc {
-      font-size: 8px;
+      font-size: 6px;
       font-weight: 300;
-      line-height: 1.6;
-      letter-spacing: 0.3px;
-      margin-bottom: 10px;
+      line-height: 1.5;
+      letter-spacing: 0.2px;
+      margin-bottom: 6px;
       opacity: 0.8;
     }
 
     .cloth-details {
-      font-size: 7px;
+      font-size: 5.5px;
       font-weight: 400;
-      line-height: 1.7;
-      letter-spacing: 0.3px;
+      line-height: 1.6;
+      letter-spacing: 0.2px;
       opacity: 0.5;
     }
 
@@ -293,32 +296,20 @@
         margin-top: 25px;
       }
 
-      .cloth-photo {
-        padding-left: 2vw;
-      }
-
       .cloth-photo img {
-        max-width: 24vw;
+        max-width: 34vw;
       }
 
       .cloth-name {
-        font-size: 7px;
-        letter-spacing: 1.5px;
-        margin-bottom: 5px;
-      }
-
-      .cloth-desc {
-        font-size: 6.5px;
-        margin-bottom: 6px;
-      }
-
-      .cloth-details {
         font-size: 6px;
       }
 
-      .cloth-info {
-        padding-left: 1.5vw;
-        padding-right: 1.5vw;
+      .cloth-desc {
+        font-size: 5.5px;
+      }
+
+      .cloth-details {
+        font-size: 5px;
       }
     }
 
@@ -335,36 +326,32 @@
       .diptych-right {
         width: 100vw;
         height: 55vh;
-        flex-direction: row;
-        align-items: center;
       }
 
       .cloth-photo {
-        padding-left: 4vw;
+        padding-left: 3vw;
       }
 
       .cloth-photo img {
-        max-width: 40vw;
+        max-width: 45vw;
         max-height: 90%;
       }
 
       .cloth-info {
-        padding-left: 3vw;
-        padding-right: 3vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
       }
 
       .cloth-name {
-        font-size: 7px;
-        margin-bottom: 4px;
+        font-size: 6px;
       }
 
       .cloth-desc {
-        font-size: 6px;
-        margin-bottom: 5px;
+        font-size: 5.5px;
       }
 
       .cloth-details {
-        font-size: 5.5px;
+        font-size: 5px;
       }
     }
   </style>
@@ -396,7 +383,7 @@
         <div class="cloth-photo"><img src="IMG_2.jpeg"></div>
         <div class="cloth-info">
           <div class="cloth-name">Look I</div>
-          <div class="cloth-desc">Пальто из плотной<br>шерсти. Свободный<br>силуэт. Необработанные<br>края.</div>
+          <div class="cloth-desc">Пальто из плотной<br>шерсти. Свободный<br>силуэт.</div>
           <div class="cloth-details">
             <span>Шерсть 100%</span>
             <span>Noir</span>
@@ -413,7 +400,7 @@
         <div class="cloth-photo"><img src="IMG_4.jpeg"></div>
         <div class="cloth-info">
           <div class="cloth-name">Look II</div>
-          <div class="cloth-desc">Брюки широкого<br>кроя. Высокая<br>посадка. Складки<br>у пояса.</div>
+          <div class="cloth-desc">Брюки широкого<br>кроя. Высокая<br>посадка.</div>
           <div class="cloth-details">
             <span>Хлопок 100%</span>
             <span>Cendre</span>
@@ -430,7 +417,7 @@
         <div class="cloth-photo"><img src="IMG_6.jpeg"></div>
         <div class="cloth-info">
           <div class="cloth-name">Look III</div>
-          <div class="cloth-desc">Рубашка из тонкого<br>хлопка. Удлинённый<br>крой. Скрытая<br>застёжка.</div>
+          <div class="cloth-desc">Рубашка из тонкого<br>хлопка. Удлинённый<br>крой.</div>
           <div class="cloth-details">
             <span>Хлопок 100%</span>
             <span>Blanc</span>
@@ -447,7 +434,7 @@
         <div class="cloth-photo"><img src="IMG_8.jpeg"></div>
         <div class="cloth-info">
           <div class="cloth-name">Look IV</div>
-          <div class="cloth-desc">Жакет без подкладки.<br>Острые плечи.<br>Однобортный.<br>Ручная работа.</div>
+          <div class="cloth-desc">Жакет без подкладки.<br>Острые плечи.<br>Ручная работа.</div>
           <div class="cloth-details">
             <span>Шерсть 100%</span>
             <span>Sombre</span>
