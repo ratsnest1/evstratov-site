@@ -26,6 +26,7 @@
       overflow: hidden;
     }
 
+    /* ЗАГОЛОВОК */
     .fixed-title {
       position: fixed;
       top: 5px;
@@ -37,16 +38,16 @@
       z-index: 1000;
       text-transform: uppercase;
       font-weight: normal;
-      /* Прямоугольник-подложка */
-      background: rgba(0, 0, 0, 0);
-      padding: 6px 12px 6px 14px;
-      transition: background 0.6s ease;
+      
+      /* Добавляем отступы заранее, чтобы текст не смещался при появлении фона */
+      padding: 4px 10px;
+      /* Плавный переход для фона */
+      transition: background-color 0.5s ease; 
     }
 
-    .fixed-title.with-bg {
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+    /* Класс для черного прямоугольника */
+    .fixed-title.title-bg {
+      background-color: #000;
     }
 
     .header-info {
@@ -58,17 +59,15 @@
       align-items: flex-end;
       text-align: right;
       z-index: 1000;
-      /* Плавное появление/исчезновение */
+      /* Плавное исчезновение */
+      transition: opacity 0.5s ease;
       opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      pointer-events: auto;
     }
 
-    .header-info.hidden {
+    /* Класс для скрытия элементов */
+    .hidden {
       opacity: 0;
-      transform: translateY(-8px);
-      pointer-events: none;
+      pointer-events: none; /* Чтобы нельзя было выделить скрытый текст */
     }
 
     .subtitle {
@@ -106,6 +105,7 @@
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: white;
+      transition: opacity 0.5s ease; /* Отдельная анимация для Amen */
     }
 
     .horizontal-scroll {
@@ -233,7 +233,7 @@
 </head>
 <body>
 
-  <div class="fixed-title" id="title">EVSTRATOV</div>
+  <div class="fixed-title" id="mainTitle">EVSTRATOV</div>
 
   <div class="header-info" id="headerInfo">
     <div class="subtitle">le saint-esprit est apparu tôt le matin</div>
@@ -242,17 +242,19 @@
       <span>February 2026 21 Sat</span>
       <span class="dedication">Рано Утром Явился Святой Дух.</span>
     </div>
-    <div class="header-amen">Amen</div>
+    <div class="header-amen" id="headerAmen">Amen</div>
   </div>
 
   <div class="page-indicator">1 / 6</div>
 
   <div class="horizontal-scroll" id="scroll">
 
+    <!-- Slide 1 (Index 0) -->
     <div class="hero-slide">
       <img src="IMG_5185.jpeg" alt="Collection I">
     </div>
 
+    <!-- Slide 2 (Index 1) -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="IMG_1.jpeg" alt="Theatre">
@@ -263,6 +265,7 @@
       <div class="item-label">Look I</div>
     </div>
 
+    <!-- Slide 3 (Index 2) -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="IMG_3.jpeg" alt="Theatre">
@@ -273,6 +276,7 @@
       <div class="item-label">Look II</div>
     </div>
 
+    <!-- Slide 4 (Index 3) -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="IMG_5.jpeg" alt="Theatre">
@@ -283,6 +287,7 @@
       <div class="item-label">Look III</div>
     </div>
 
+    <!-- Slide 5 (Index 4) -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="IMG_7.jpeg" alt="Theatre">
@@ -293,6 +298,7 @@
       <div class="item-label">Look IV</div>
     </div>
 
+    <!-- Slide 6 (Index 5) - Last -->
     <div class="final-slide">
       <div class="final-amen">Amen</div>
     </div>
@@ -302,8 +308,12 @@
   <script>
     const scroll = document.getElementById('scroll');
     const indicator = document.querySelector('.page-indicator');
+    
+    // Получаем элементы для управления
     const headerInfo = document.getElementById('headerInfo');
-    const title = document.getElementById('title');
+    const headerAmen = document.getElementById('headerAmen');
+    const mainTitle = document.getElementById('mainTitle');
+
     const total = 6;
     let current = 0;
     let isAnimating = false;
@@ -312,21 +322,41 @@
       if (index < 0 || index >= total || isAnimating) return;
       isAnimating = true;
       current = index;
+      
+      // Скролл
       scroll.style.transform = `translateX(-${current * 100}vw)`;
       indicator.textContent = `${current + 1} / ${total}`;
 
-      // После первого слайда — прячем инфо, показываем подложку
-      if (current > 0) {
-        headerInfo.classList.add('hidden');
-        title.classList.add('with-bg');
-      } else {
+      // --- ЛОГИКА ОТОБРАЖЕНИЯ ЭЛЕМЕНТОВ ---
+      
+      if (current === 0) {
+        // Сценарий 1: Самая первая страница
+        // Показываем всё, убираем черный фон у заголовка
         headerInfo.classList.remove('hidden');
-        title.classList.remove('with-bg');
+        headerAmen.classList.remove('hidden');
+        mainTitle.classList.remove('title-bg');
+      
+      } else if (current === total - 1) {
+        // Сценарий 2: Самая последняя страница (6)
+        // Возвращаем надписи, но скрываем верхний "Amen"
+        // Заголовок остается с черным фоном (или добавляется)
+        headerInfo.classList.remove('hidden');
+        headerAmen.classList.add('hidden'); // Скрываем только слово Amen
+        mainTitle.classList.add('title-bg');
+
+      } else {
+        // Сценарий 3: Промежуточные страницы (2, 3, 4, 5)
+        // Скрываем все надписи под заголовком
+        // Заголовок получает черный фон
+        headerInfo.classList.add('hidden');
+        mainTitle.classList.add('title-bg');
       }
+      // -------------------------------------
 
       setTimeout(() => { isAnimating = false; }, 800);
     }
 
+    // Обработчик колесика мыши
     window.addEventListener('wheel', function(e) {
       e.preventDefault();
       if (e.deltaY > 0 || e.deltaX > 0) {
@@ -336,6 +366,7 @@
       }
     }, { passive: false });
 
+    // Клавиатура
     window.addEventListener('keydown', function(e) {
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         goTo(current + 1);
@@ -344,6 +375,7 @@
       }
     });
 
+    // Тач (телефоны)
     let touchStartX = 0;
     let touchStartY = 0;
 
