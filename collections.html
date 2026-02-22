@@ -228,12 +228,10 @@
 
   <div class="horizontal-scroll" id="scroll">
 
-    <!-- Первый слайд — картинка храма -->
     <div class="hero-slide">
       <img src="IMG_5185.jpeg" alt="Collection I">
     </div>
 
-    <!-- Диптих 1: IMG_1 (театр) + IMG_2 (одежда) -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="IMG_1.jpeg" alt="Theatre">
@@ -244,7 +242,6 @@
       <div class="item-label">Look I</div>
     </div>
 
-    <!-- Диптих 2: IMG_3 (театр) + IMG_4 (одежда) -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="IMG_3.jpeg" alt="Theatre">
@@ -255,7 +252,6 @@
       <div class="item-label">Look II</div>
     </div>
 
-    <!-- Диптих 3: IMG_5 (театр) + IMG_6 (одежда) -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="IMG_5.jpeg" alt="Theatre">
@@ -266,7 +262,6 @@
       <div class="item-label">Look III</div>
     </div>
 
-    <!-- Диптих 4: IMG_7 (театр) + IMG_8 (одежда) -->
     <div class="diptych">
       <div class="diptych-left">
         <img src="IMG_7.jpeg" alt="Theatre">
@@ -277,7 +272,6 @@
       <div class="item-label">Look IV</div>
     </div>
 
-    <!-- Финальный слайд -->
     <div class="final-slide">
       <div class="final-amen">Amen</div>
     </div>
@@ -323,21 +317,23 @@
     window.addEventListener('touchstart', function(e) {
       touchStartX = e.touches[0].clientX;
       touchStartY = e.touches[0].clientY;
-    });
+    }, { passive: false });
+
+    window.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+    }, { passive: false });
 
     window.addEventListener('touchend', function(e) {
       const deltaX = touchStartX - e.changedTouches[0].clientX;
       const deltaY = touchStartY - e.changedTouches[0].clientY;
 
-      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
-        if (deltaX > 0) {
-          goTo(current + 1);
-        } else {
-          goTo(current - 1);
-        }
+      if (deltaX > 40 || deltaY > 40) {
+        goTo(current + 1);
+      } else if (deltaX < -40 || deltaY < -40) {
+        goTo(current - 1);
       }
     });
-  <script src="collections.js"></script>
+  </script>
 
 </body>
 </html>
