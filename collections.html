@@ -26,7 +26,6 @@
       overflow: hidden;
     }
 
-    /* --- ЗАГОЛОВОК --- */
     .fixed-title {
       position: fixed;
       top: 5px;
@@ -38,44 +37,49 @@
       z-index: 1000;
       text-transform: uppercase;
       font-weight: normal;
-      white-space: nowrap; /* Запрещаем перенос строки */
-      
-      /* ВАЖНО: Задаем отступы сразу. 
-         Фон прозрачный, но место под него зарезервировано.
-         Текст не сдвинется ни на пиксель при смене цвета. */
-      padding: 5px 10px;
-      background-color: transparent;
-      
-      /* Плавная смена цвета фона */
-      transition: background-color 0.5s ease;
+      padding: 6px 12px 6px 14px;
+      background: transparent;
+      transition: background 0.5s ease;
     }
 
-    /* Состояние с черным фоном */
-    .fixed-title.title-bg {
-      background-color: #000;
+    .fixed-title.with-bg {
+      background: #000;
     }
 
-    /* --- БЛОК С ИНФОРМАЦИЕЙ --- */
     .header-info {
       position: fixed;
-      /* Высчитываем отступ: 5px(top) + высота текста + отступы ~ 30-35px */
-      top: 38px; 
-      /* Выравниваем по правому краю, учитывая letter-spacing заголовка */
-      right: 15px; 
+      top: 35px;
+      right: 5px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       text-align: right;
-      z-index: 900;
-      
-      /* Плавное исчезновение */
-      transition: opacity 0.5s ease;
+      z-index: 1000;
       opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: auto;
     }
 
-    .hidden {
+    .header-info.hidden {
       opacity: 0;
+      transform: translateY(-8px);
       pointer-events: none;
+    }
+
+    .header-amen {
+      margin-top: 40px;
+      font-size: 6.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: white;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    .header-amen.amen-hidden {
+      opacity: 0;
     }
 
     .subtitle {
@@ -85,15 +89,15 @@
       letter-spacing: 1px;
       line-height: 1;
       color: white;
-      margin-bottom: 15px; /* Отступ до даты */
     }
 
     .info {
+      margin-top: 16px;
       font-size: 6.5px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      line-height: 1.4;
+      line-height: 1.2;
       text-align: right;
       color: white;
     }
@@ -102,17 +106,10 @@
       display: block;
     }
 
-    .header-amen {
-      margin-top: 25px; /* Отступ до Amen */
-      font-size: 6.5px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: white;
-      /* Чтобы скрывать Amen отдельно через display: none в JS */
+    .info .dedication {
+      margin-top: 1px;
     }
 
-    /* --- СЛАЙДЕР (без изменений) --- */
     .horizontal-scroll {
       display: flex;
       height: 100vh;
@@ -203,26 +200,42 @@
       z-index: 1000;
     }
 
+    @media (max-width: 768px) {
+      .header-info {
+        top: 30px;
+      }
+
+      .subtitle {
+        font-size: 7px;
+      }
+
+      .info {
+        font-size: 5.5px;
+        margin-top: 12px;
+      }
+
+      .header-amen {
+        font-size: 5.5px;
+        margin-top: 25px;
+      }
+    }
+
     @media (max-width: 480px) {
       .diptych {
         flex-direction: column;
       }
-      .diptych-left, .diptych-right {
+
+      .diptych-left,
+      .diptych-right {
         width: 100vw;
         height: 50vh;
-      }
-      
-      /* Небольшая коррекция для мобильных, если текст слишком широкий */
-      .fixed-title {
-         font-size: 11px; /* Чуть меньше на маленьких экранах, чтобы влезло */
-         letter-spacing: 14px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="fixed-title" id="mainTitle">EVSTRATOV</div>
+  <div class="fixed-title" id="title">EVSTRATOV</div>
 
   <div class="header-info" id="headerInfo">
     <div class="subtitle">le saint-esprit est apparu tôt le matin</div>
@@ -237,99 +250,111 @@
   <div class="page-indicator">1 / 6</div>
 
   <div class="horizontal-scroll" id="scroll">
-    <!-- Слайд 1 -->
+
     <div class="hero-slide">
       <img src="IMG_5185.jpeg" alt="Collection I">
     </div>
 
-    <!-- Слайд 2 -->
     <div class="diptych">
-      <div class="diptych-left"><img src="IMG_1.jpeg" alt=""></div>
-      <div class="diptych-right"><img src="IMG_2.jpeg" alt=""></div>
+      <div class="diptych-left">
+        <img src="IMG_1.jpeg" alt="Theatre">
+      </div>
+      <div class="diptych-right">
+        <img src="IMG_2.jpeg" alt="Look 1">
+      </div>
       <div class="item-label">Look I</div>
     </div>
 
-    <!-- Слайд 3 -->
     <div class="diptych">
-      <div class="diptych-left"><img src="IMG_3.jpeg" alt=""></div>
-      <div class="diptych-right"><img src="IMG_4.jpeg" alt=""></div>
+      <div class="diptych-left">
+        <img src="IMG_3.jpeg" alt="Theatre">
+      </div>
+      <div class="diptych-right">
+        <img src="IMG_4.jpeg" alt="Look 2">
+      </div>
       <div class="item-label">Look II</div>
     </div>
 
-    <!-- Слайд 4 -->
     <div class="diptych">
-      <div class="diptych-left"><img src="IMG_5.jpeg" alt=""></div>
-      <div class="diptych-right"><img src="IMG_6.jpeg" alt=""></div>
+      <div class="diptych-left">
+        <img src="IMG_5.jpeg" alt="Theatre">
+      </div>
+      <div class="diptych-right">
+        <img src="IMG_6.jpeg" alt="Look 3">
+      </div>
       <div class="item-label">Look III</div>
     </div>
 
-    <!-- Слайд 5 -->
     <div class="diptych">
-      <div class="diptych-left"><img src="IMG_7.jpeg" alt=""></div>
-      <div class="diptych-right"><img src="IMG_8.jpeg" alt=""></div>
+      <div class="diptych-left">
+        <img src="IMG_7.jpeg" alt="Theatre">
+      </div>
+      <div class="diptych-right">
+        <img src="IMG_8.jpeg" alt="Look 4">
+      </div>
       <div class="item-label">Look IV</div>
     </div>
 
-    <!-- Слайд 6 (Финал) -->
     <div class="final-slide">
       <div class="final-amen">Amen</div>
     </div>
+
   </div>
 
   <script>
     const scroll = document.getElementById('scroll');
     const indicator = document.querySelector('.page-indicator');
-    
-    const mainTitle = document.getElementById('mainTitle');
     const headerInfo = document.getElementById('headerInfo');
     const headerAmen = document.getElementById('headerAmen');
-
+    const title = document.getElementById('title');
     const total = 6;
     let current = 0;
     let isAnimating = false;
+
+    function updateUI() {
+      if (current === 0) {
+        // Первый слайд — всё видно, без подложки
+        headerInfo.classList.remove('hidden');
+        headerAmen.classList.remove('amen-hidden');
+        title.classList.remove('with-bg');
+      } else if (current === total - 1) {
+        // Последний слайд — надписи возвращаются, но без Amen
+        headerInfo.classList.remove('hidden');
+        headerAmen.classList.add('amen-hidden');
+        title.classList.remove('with-bg');
+      } else {
+        // Слайды 2–5 — всё скрыто, подложка у EVSTRATOV
+        headerInfo.classList.add('hidden');
+        headerAmen.classList.remove('amen-hidden');
+        title.classList.add('with-bg');
+      }
+    }
 
     function goTo(index) {
       if (index < 0 || index >= total || isAnimating) return;
       isAnimating = true;
       current = index;
-      
       scroll.style.transform = `translateX(-${current * 100}vw)`;
       indicator.textContent = `${current + 1} / ${total}`;
-
-      // --- ЛОГИКА ОТОБРАЖЕНИЯ ---
-
-      if (current === 0) {
-        // Слайд 1: Прозрачный фон заголовка, текст виден
-        mainTitle.classList.remove('title-bg');
-        headerInfo.classList.remove('hidden');
-        headerAmen.style.display = 'block';
-
-      } else if (current === total - 1) {
-        // Последний слайд (6): Черный фон заголовка, текст виден, Amen скрыт
-        mainTitle.classList.add('title-bg');
-        headerInfo.classList.remove('hidden');
-        headerAmen.style.display = 'none';
-
-      } else {
-        // Середина (2-5): Черный фон заголовка, текст под ним скрыт полностью
-        mainTitle.classList.add('title-bg');
-        headerInfo.classList.add('hidden');
-        headerAmen.style.display = 'block'; // Сброс для возврата назад
-      }
-
+      updateUI();
       setTimeout(() => { isAnimating = false; }, 800);
     }
 
-    // Управление
     window.addEventListener('wheel', function(e) {
       e.preventDefault();
-      if (e.deltaY > 0 || e.deltaX > 0) goTo(current + 1);
-      else goTo(current - 1);
+      if (e.deltaY > 0 || e.deltaX > 0) {
+        goTo(current + 1);
+      } else {
+        goTo(current - 1);
+      }
     }, { passive: false });
 
     window.addEventListener('keydown', function(e) {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
-      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        goTo(current + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        goTo(current - 1);
+      }
     });
 
     let touchStartX = 0;
@@ -340,13 +365,19 @@
       touchStartY = e.touches[0].clientY;
     }, { passive: false });
 
-    window.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
+    window.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+    }, { passive: false });
 
     window.addEventListener('touchend', function(e) {
       const deltaX = touchStartX - e.changedTouches[0].clientX;
       const deltaY = touchStartY - e.changedTouches[0].clientY;
-      if (deltaX > 40 || deltaY > 40) goTo(current + 1);
-      else if (deltaX < -40 || deltaY < -40) goTo(current - 1);
+
+      if (deltaX > 40 || deltaY > 40) {
+        goTo(current + 1);
+      } else if (deltaX < -40 || deltaY < -40) {
+        goTo(current - 1);
+      }
     });
   </script>
 
