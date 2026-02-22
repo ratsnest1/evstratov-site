@@ -4,10 +4,14 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow: hidden;
+}
+
 body {
   font-family: 'Jomolhari', serif;
-  overflow-x: hidden;
-  min-height: 100vh;
+  overflow: hidden;
+  height: 100vh;
   background: black;
   color: white;
   position: relative;
@@ -46,11 +50,11 @@ body {
 .center-wrapper {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 0px;
+  padding-top: 0;
 }
 
 .collections-link {
@@ -67,10 +71,6 @@ body {
 
 .collections-link:hover {
   color: grey;
-}
-
-.collections-link:hover {
-  color: rgba(255, 255, 255, 0.7);
 }
 
 @keyframes fadeIn {
