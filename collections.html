@@ -176,14 +176,14 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-left: 2vw;
-  flex-shrink: 0;
+  justify-content: flex-start;   /* смещаем влево */
+  padding-left: 0;               /* убираем отступ */
 }
 
 .cloth-photo img {
-  max-height: 90%;
-  max-width: 100%;
+  height: 100%;                  /* делаем больше */
+  max-height: 95%;
+  width: auto;
   object-fit: contain;
 }
 
@@ -213,42 +213,38 @@
       display: block;
     }
 
-    .cloth-info {
-      padding-left: 1vw;
-      padding-right: 1vw;
-      font-family: 'Cormorant Garamond', serif;
-      color: #1A1A1A;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex-shrink: 1;
-      min-width: 0;
-    }
+   .cloth-info {
+  width: 25%;
+  padding: 0 1.5vw;
+  font-family: 'Cormorant Garamond', serif;
+  color: #1A1A1A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-    .cloth-name {
-      font-size: 7px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 5px;
-    }
+/* увеличиваем шрифт */
+.cloth-name {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
 
-    .cloth-desc {
-      font-size: 6px;
-      font-weight: 300;
-      line-height: 1.5;
-      letter-spacing: 0.2px;
-      margin-bottom: 6px;
-      opacity: 0.8;
-    }
+.cloth-desc {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
 
-    .cloth-details {
-      font-size: 5.5px;
-      font-weight: 400;
-      line-height: 1.6;
-      letter-spacing: 0.2px;
-      opacity: 0.5;
-    }
+.cloth-details {
+  font-size: 9px;
+  line-height: 1.6;
+  opacity: 0.6;
+}
 
     .cloth-details span {
       display: block;
