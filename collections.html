@@ -147,18 +147,34 @@
       position: relative;
     }
 
-    .diptych-left,
-    .diptych-right {
+    .diptych-left {
       width: 50vw;
       height: 100vh;
       overflow: hidden;
     }
 
-    .diptych-left img,
-    .diptych-right img {
+    .diptych-left img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
+    }
+
+    /* Правая часть — одежда на кремовом фоне */
+    .diptych-right {
+      width: 50vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #F9EEDF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .diptych-right img {
+      max-width: 70%;
+      max-height: 85%;
+      object-fit: contain;
       display: block;
     }
 
@@ -213,37 +229,47 @@
       opacity: 0;
     }
 
-@media (max-width: 768px) {
-  .header-info {
-    top: 30px;
-  }
+    @media (max-width: 768px) {
+      .header-info {
+        top: 30px;
+      }
 
-  .subtitle {
-    font-size: 7px;
-  }
+      .subtitle {
+        font-size: 7px;
+      }
 
-  .info {
-    font-size: 5.5px;
-    margin-top: 12px;
-  }
+      .info {
+        font-size: 5.5px;
+        margin-top: 12px;
+      }
 
-  .header-amen {
-    font-size: 5.5px;
-    margin-top: 25px;
-  }
-}
+      .header-amen {
+        font-size: 5.5px;
+        margin-top: 25px;
+      }
 
-@media (max-width: 480px) {
-  .diptych {
-    flex-direction: column;
-  }
+      .diptych-right img {
+        max-width: 80%;
+        max-height: 80%;
+      }
+    }
 
-  .diptych-left,
-  .diptych-right {
-    width: 100vw;
-    height: 50vh;
-  }
-}
+    @media (max-width: 480px) {
+      .diptych {
+        flex-direction: column;
+      }
+
+      .diptych-left,
+      .diptych-right {
+        width: 100vw;
+        height: 50vh;
+      }
+
+      .diptych-right img {
+        max-width: 60%;
+        max-height: 80%;
+      }
+    }
   </style>
 </head>
 <body>
