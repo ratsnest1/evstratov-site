@@ -34,16 +34,24 @@
       font-size: 12px;
       letter-spacing: 18px;
       color: white;
-      z-index: 1000;
+      z-index: 1001;
       text-transform: uppercase;
       font-weight: normal;
-      padding: 6px 12px 6px 14px;
-      background: transparent;
-      transition: background 0.5s ease;
     }
 
-    .fixed-title.with-bg {
+    .title-bg {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 4px 5px 6px 12px;
       background: #000;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .title-bg.visible {
+      opacity: 1;
     }
 
     .header-info {
@@ -55,31 +63,12 @@
       align-items: flex-end;
       text-align: right;
       z-index: 1000;
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      pointer-events: auto;
+      transition: opacity 0.5s ease;
     }
 
     .header-info.hidden {
       opacity: 0;
-      transform: translateY(-8px);
       pointer-events: none;
-    }
-
-    .header-amen {
-      margin-top: 40px;
-      font-size: 6.5px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: white;
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
-
-    .header-amen.amen-hidden {
-      opacity: 0;
     }
 
     .subtitle {
@@ -108,6 +97,16 @@
 
     .info .dedication {
       margin-top: 1px;
+    }
+
+    .header-amen {
+      margin-top: 40px;
+      font-size: 6.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: white;
+      transition: opacity 0.5s ease;
     }
 
     .horizontal-scroll {
@@ -198,6 +197,11 @@
       color: white;
       opacity: 0.3;
       z-index: 1000;
+      transition: opacity 0.5s ease;
+    }
+
+    .page-indicator.hidden {
+      opacity: 0;
     }
 
     @media (max-width: 768px) {
@@ -235,7 +239,9 @@
 </head>
 <body>
 
-  <div class="fixed-title" id="title">EVSTRATOV</div>
+  <div class="title-bg" id="titleBg"></div>
+
+  <div class="fixed-title">EVSTRATOV</div>
 
   <div class="header-info" id="headerInfo">
     <div class="subtitle">le saint-esprit est apparu tôt le matin</div>
@@ -244,10 +250,10 @@
       <span>February 2026 21 Sat</span>
       <span class="dedication">Рано Утром Явился Святой Дух.</span>
     </div>
-    <div class="header-amen" id="headerAmen">Amen</div>
+    <div class="header-amen">Amen</div>
   </div>
 
-  <div class="page-indicator">1 / 6</div>
+  <div class="page-indicator" id="pageIndicator">1 / 6</div>
 
   <div class="horizontal-scroll" id="scroll">
 
@@ -303,30 +309,29 @@
 
   <script>
     const scroll = document.getElementById('scroll');
-    const indicator = document.querySelector('.page-indicator');
+    const indicator = document.getElementById('pageIndicator');
     const headerInfo = document.getElementById('headerInfo');
-    const headerAmen = document.getElementById('headerAmen');
-    const title = document.getElementById('title');
+    const titleBg = document.getElementById('titleBg');
+    const headerAmen = document.querySelector('.header-amen');
     const total = 6;
     let current = 0;
     let isAnimating = false;
 
     function updateUI() {
-      if (current === 0) {
-        // Первый слайд — всё видно, без подложки
-        headerInfo.classList.remove('hidden');
-        headerAmen.classList.remove('amen-hidden');
-        title.classList.remove('with-bg');
-      } else if (current === total - 1) {
-        // Последний слайд — надписи возвращаются, но без Amen
-        headerInfo.classList.remove('hidden');
-        headerAmen.classList.add('amen-hidden');
-        title.classList.remove('with-bg');
-      } else {
-        // Слайды 2–5 — всё скрыто, подложка у EVSTRATOV
+      if (current >= 1 && current <= 4) {
         headerInfo.classList.add('hidden');
-        headerAmen.classList.remove('amen-hidden');
-        title.classList.add('with-bg');
+        titleBg.classList.add('visible');
+        indicator.classList.add('hidden');
+      } else {
+        headerInfo.classList.remove('hidden');
+        titleBg.classList.remove('visible');
+        indicator.classList.remove('hidden');
+      }
+
+      if (current === 5) {
+        headerAmen.style.opacity = '0';
+      } else {
+        headerAmen.style.opacity = '1';
       }
     }
 
