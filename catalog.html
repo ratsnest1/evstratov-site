@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalog — Evstratov</title>
   <link href="https://fonts.googleapis.com/css2?family=Jomolhari&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -17,7 +16,6 @@
     body {
       background-color: #F9EEDF;
       color: #1A1A1A;
-      font-family: 'Cormorant Garamond', serif;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
@@ -39,7 +37,7 @@
       position: fixed;
       top: 8px;
       left: 15px;
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Jomolhari', serif;
       font-size: 8px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -53,35 +51,22 @@
       opacity: 0.4;
     }
 
-    .page-title {
-      text-align: center;
-      padding-top: 12vh;
-      margin-bottom: 8vh;
-      font-family: 'Jomolhari', serif;
-      font-size: 10px;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      font-weight: normal;
-      opacity: 0.5;
-    }
-
     .catalog-grid {
       max-width: 900px;
       margin: 0 auto;
-      padding: 0 30px 80px;
+      padding: 60px 30px 80px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 40px 30px;
+      gap: 5px;
     }
 
     .catalog-item {
-      text-decoration: none;
-      color: #1A1A1A;
+      display: block;
       transition: opacity 0.4s;
     }
 
     .catalog-item:hover {
-      opacity: 0.6;
+      opacity: 0.7;
     }
 
     .catalog-item img {
@@ -91,30 +76,12 @@
       display: block;
     }
 
-    .catalog-item-name {
-      margin-top: 8px;
-      font-size: 9px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-align: center;
-    }
-
-    .catalog-item-price {
-      margin-top: 3px;
-      font-size: 8px;
-      font-weight: 300;
-      letter-spacing: 1px;
-      text-align: center;
-      opacity: 0.5;
-    }
-
     @media (max-width: 480px) {
       .catalog-grid {
         grid-template-columns: 1fr;
-        max-width: 300px;
-        gap: 35px;
-        padding: 0 20px 60px;
+        max-width: 100%;
+        gap: 5px;
+        padding: 50px 5px 60px;
       }
     }
   </style>
@@ -124,34 +91,11 @@
   <div class="fixed-title">EVSTRATOV</div>
   <a href="index.html" class="back-home">← back</a>
 
-  <div class="page-title">Catalog</div>
-
   <div class="catalog-grid">
-
-    <a href="#" class="catalog-item">
-      <img src="IMG_2.jpeg" alt="Look I">
-      <div class="catalog-item-name">Look I</div>
-      <div class="catalog-item-price">upon request</div>
-    </a>
-
-    <a href="#" class="catalog-item">
-      <img src="IMG_4.jpeg" alt="Look II">
-      <div class="catalog-item-name">Look II</div>
-      <div class="catalog-item-price">upon request</div>
-    </a>
-
-    <a href="#" class="catalog-item">
-      <img src="IMG_6.jpeg" alt="Look III">
-      <div class="catalog-item-name">Look III</div>
-      <div class="catalog-item-price">upon request</div>
-    </a>
-
-    <a href="#" class="catalog-item">
-      <img src="IMG_8.jpeg" alt="Look IV">
-      <div class="catalog-item-name">Look IV</div>
-      <div class="catalog-item-price">upon request</div>
-    </a>
-
+    <a href="#" class="catalog-item"><img src="IMG_2.jpeg" alt="Look I"></a>
+    <a href="#" class="catalog-item"><img src="IMG_4.jpeg" alt="Look II"></a>
+    <a href="#" class="catalog-item"><img src="IMG_6.jpeg" alt="Look III"></a>
+    <a href="#" class="catalog-item"><img src="IMG_8.jpeg" alt="Look IV"></a>
   </div>
 
 </body>
