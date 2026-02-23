@@ -57,7 +57,16 @@ body {
   padding-top: 0;
 }
 
-.collections-link {
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeIn 3s ease 1.5s forwards;
+}
+
+.nav-link {
   font-size: 8px;
   letter-spacing: 4px;
   color: white;
@@ -65,11 +74,9 @@ body {
   text-transform: lowercase;
   font-family: 'Jomolhari', serif;
   transition: color 0.5s ease;
-  opacity: 0;
-  animation: fadeIn 3s ease 1.5s forwards;
 }
 
-.collections-link:hover {
+.nav-link:hover {
   color: grey;
 }
 
