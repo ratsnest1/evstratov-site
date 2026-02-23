@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     title.style.opacity = '1';
   }, 500);
 
-  // Блокировка скролла на телефоне
   document.body.addEventListener('touchmove', function(e) {
     e.preventDefault();
   }, { passive: false });
