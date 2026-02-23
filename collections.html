@@ -26,6 +26,7 @@
       overflow: hidden;
     }
 
+    /* ГРАДИЕНТ СВЕРХУ */
     body::before {
       content: '';
       position: fixed;
@@ -146,40 +147,25 @@
       position: relative;
     }
 
-    .diptych-left {
+    .diptych-left,
+    .diptych-right {
       width: 50vw;
       height: 100vh;
       overflow: hidden;
     }
 
-    .diptych-left img {
+    .diptych-left img,
+    .diptych-right img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .diptych-right {
-      width: 50vw;
-      height: 100vh;
-      overflow: hidden;
-      background-color: #F9EEDF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .diptych-right img {
-      max-width: 96%;
-      max-height: 96%;
-      object-fit: contain;
-      display: block;
-    }
-
     .item-label {
       position: absolute;
       bottom: 15px;
-      left: 25%;
+      left: 50%;
       transform: translateX(-50%);
       font-size: 7px;
       font-weight: 500;
@@ -227,46 +213,37 @@
       opacity: 0;
     }
 
-    @media (max-width: 768px) {
-      .header-info {
-        top: 30px;
-      }
+@media (max-width: 768px) {
+  .header-info {
+    top: 30px;
+  }
 
-      .subtitle {
-        font-size: 7px;
-      }
+  .subtitle {
+    font-size: 7px;
+  }
 
-      .info {
-        font-size: 5.5px;
-        margin-top: 12px;
-      }
+  .info {
+    font-size: 5.5px;
+    margin-top: 12px;
+  }
 
-      .header-amen {
-        font-size: 5.5px;
-        margin-top: 25px;
-      }
-    }
+  .header-amen {
+    font-size: 5.5px;
+    margin-top: 25px;
+  }
+}
 
-    @media (max-width: 480px) {
-      .diptych {
-        flex-direction: column;
-      }
+@media (max-width: 480px) {
+  .diptych {
+    flex-direction: column;
+  }
 
-      .diptych-left {
-        width: 100vw;
-        height: 45vh;
-      }
-
-      .diptych-right {
-        width: 100vw;
-        height: 55vh;
-      }
-
-      .diptych-right img {
-        max-width: 90%;
-        max-height: 90%;
-      }
-    }
+  .diptych-left,
+  .diptych-right {
+    width: 100vw;
+    height: 50vh;
+  }
+}
   </style>
 </head>
 <body>
