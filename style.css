@@ -67,17 +67,26 @@ body {
 }
 
 .nav-link {
+  display: block;
   font-size: 8px;
   letter-spacing: 4px;
-  color: white;
-  text-decoration: none;
+  color: white !important;
+  text-decoration: none !important;
   text-transform: lowercase;
   font-family: 'Jomolhari', serif;
   transition: color 0.5s ease;
 }
 
+.nav-link:visited {
+  color: white !important;
+}
+
 .nav-link:hover {
-  color: grey;
+  color: grey !important;
+}
+
+.nav-link:active {
+  color: white !important;
 }
 
 @keyframes fadeIn {
@@ -98,10 +107,14 @@ body {
 }
 
 .footer-link a {
-  color: white;
-  text-decoration: none;
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.footer-link a:visited {
+  color: white !important;
 }
 
 .footer-link a:hover {
-  color: grey;
+  color: grey !important;
 }
