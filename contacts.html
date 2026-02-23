@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts — Evstratov</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jomolhari&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      overflow: hidden;
+    }
+
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Cormorant Garamond', serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .fixed-title {
+      position: fixed;
+      top: 5px;
+      right: 5px;
+      font-family: 'Jomolhari', serif;
+      font-size: 12px;
+      letter-spacing: 18px;
+      color: white;
+      z-index: 1000;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+
+    .back-home {
+      position: fixed;
+      top: 8px;
+      left: 15px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: white;
+      text-decoration: none;
+      z-index: 1000;
+      transition: opacity 0.3s;
+    }
+
+    .back-home:hover {
+      opacity: 0.4;
+    }
+
+    .contacts-content {
+      text-align: center;
+      padding: 0 30px;
+      opacity: 0;
+      animation: appear 2s ease 0.3s forwards;
+    }
+
+    .contacts-title {
+      font-family: 'Jomolhari', serif;
+      font-size: 10px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      font-weight: normal;
+      opacity: 0.5;
+      margin-bottom: 35px;
+    }
+
+    .contacts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-item {
+      text-align: center;
+    }
+
+    .contact-label {
+      font-size: 7px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.3;
+      margin-bottom: 5px;
+    }
+
+    .contact-value a {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: white;
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .contact-value a:hover {
+      opacity: 1;
+    }
+
+    @keyframes appear {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-value a {
+        font-size: 9px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fixed-title">EVSTRATOV</div>
+  <a href="index.html" class="back-home">← back</a>
+
+  <div class="contacts-content">
+    <div class="contacts-title">Contacts</div>
+    <div class="contacts-list">
+
+      <div class="contact-item">
+        <div class="contact-label">Telegram</div>
+        <div class="contact-value">
+          <a href="https://t.me/magicpillsinmyhead" target="_blank">@magicpillsinmyhead</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <div class="contact-value">
+          <a href="mailto:evstratov@mail.ru">evstratov@mail.ru</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-label">Instagram</div>
+        <div class="contact-value">
+          <a href="https://instagram.com/evstratov" target="_blank">@evstratov</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
